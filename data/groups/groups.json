@@ -1,0 +1,36 @@
+[
+	{
+		"groupName":"ZapCo",
+		"groupID":"1",
+		"groupType":"cCsual",
+		"profilePicture":"filenamehere.jpg",
+		"timeZone":"Eastern",
+        "webSite":"None",
+		"bio":"We enjoy getting together to casually socialize in games like Sun Haven or Animal Crossing. Show us your farms and islands!",
+		"members": {
+			"userName": "Owner",
+			"userName2": "Officer",
+			"uerName3":"rookie",
+			"uerName4":"rookie"
+		},
+		"freeToJoin":true
+	},
+	{
+		"groupName":"Fantasy Dynasty",
+		"groupID":"2",
+		"groupType":"Professional",
+		"profilePicture":"filenamehere.jpg",
+		"timeZone":"Central",
+        "webSite":"www.fantasydynasty.qte",
+		"bio":"A group of Minecraft builders with experience turning your daydreams into reality. You can see our gallery at the link. For business inquires contact us at: exampleemail@freemail.com",
+		"members": {
+			"GypsumRose": "Owner",
+			"Springdale203": "Project Lead",
+			"Jeff":"Organics Builder",
+            "Aquarius_Aggravation":"Architectural Builder",
+            "DaisyChain":"Builder",
+            "xXnoscopeXx":"Builder"
+		},
+		"freeToJoin":false
+	}
+]
