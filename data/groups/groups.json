@@ -1,8 +1,8 @@
 [
 	{
-		"groupName":"ZapCo",
-		"groupID":"1",
-		"groupType":"cCsual",
+		"name":"ZapCo",
+		"id":"1",
+		"type":"cCsual",
 		"profilePicture":"filenamehere.jpg",
 		"timeZone":"Eastern",
         "webSite":"None",
@@ -16,9 +16,9 @@
 		"freeToJoin":true
 	},
 	{
-		"groupName":"Fantasy Dynasty",
-		"groupID":"2",
-		"groupType":"Professional",
+		"name":"Fantasy Dynasty",
+		"id":"2",
+		"type":"Professional",
 		"profilePicture":"filenamehere.jpg",
 		"timeZone":"Central",
         "webSite":"www.fantasydynasty.qte",
