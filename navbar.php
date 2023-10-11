@@ -1,6 +1,8 @@
 // adapted from: 
+<? php 
+require_once APP_PATH.'/themes/css/styles.css';
 
-<!-- Responsive navbar-->
+echo '<!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container px-5">
         <a class="navbar-brand" href="#!">Start Bootstrap</a>
@@ -13,4 +15,4 @@
             <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
         </ul>
     </div>
-</nav>
+</nav>';
