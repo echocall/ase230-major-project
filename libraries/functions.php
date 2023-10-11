@@ -54,13 +54,12 @@ function readCSVFile($file){
    
         // trim white spaces at start of the line.
         $line=trim(fgets($fp));
-        echo $line.'y'.'<br />';
         $line=preg_replace('/(^"|"$)/','',$line);
-        echo $line.'x';
    
         // check the line has characters in it.
         if(strlen($line)>0){
             // turn line into an array.
+            print_r($line);
             $content=explode(',',$line);
             array_push($outerArray,$content);
             }else{
@@ -71,6 +70,39 @@ function readCSVFile($file){
     // close the file.
     fclose($fp);
 }
+
+function readCSVFileLine($file){
+    // pulls info from CSV file.
+    // check if file exists and is readable. Stolen from bit of code Jacob shared
+    if(!file_exists($file) || !is_readable($file)) return false;
+
+    // Everything else below is modified from 09-csv-read.php
+    // create array to return
+    $outerArray=array();
+    // open file with fOpen & get path
+    $fp=fopen($file,'r');
+
+    // writes the contents into an array.
+    while(!feof($fp)){
+   
+        // trim white spaces at start of the line.
+        $line=trim(fgets($fp));
+        $line=preg_replace('/(^"|"$)/','',$line);
+   
+        // check the line has characters in it.
+        if(strlen($line)>0){
+            // turn line into an array.
+            print_r($line);
+            $content=explode(',',$line);
+            }else{
+                continue;
+            }
+    }
+    return $content;
+    // close the file.
+    fclose($fp);
+}
+
 
 function getGuildRanks($array, $guildID){
     // get the ranks of a specific guild

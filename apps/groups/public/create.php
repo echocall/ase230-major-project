@@ -1,8 +1,18 @@
 <?php
-// CREATE.php: add a product to the already existing json file.
+// CREATE.php: add a group to the already existing json file.
 
 require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
+
+/* TODO: 
+    - change the 'Create Applications Array' into 'create Games array'
+    - put an explanation of how Accepting New Members works.
+    - pick first game to be associated with from dropdown list
+*/
+
+$gameList=readCSVFileLine(APP_PATH.'/data/games.csv');
+
+$i=0;
 
 if(count($_POST)>0){
     // create applications array
@@ -30,23 +40,34 @@ if(count($_POST)>0){
     }
 }else{
 ?>
-<a href="index.php">Product Index</a>
+<a href="index.php">Groups Index</a>
 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
     <div>
-        <label>Guild Name</label><br />
-        <input type="text" name="guildName" placeholder="Guild Name" />
+        <label>Group Name</label><br />
+        <input type="text" name="groupName" placeholder="Group Name" />
     </div>
     <div>
-        <label>Guild ID</label><br />
-        <input type="text" name="guildID" placeholder="Guild ID" />
+        <label>Group ID</label><br />
+        <input type="text" name="groupID" placeholder="###" />
     </div>
     <div>
-        <label>Guild Owner</label><br />
+        <label>Group Owner</label><br />
         <input type="text" name="owner" placeholder="Username of Owner" />
     </div>
     <div>
-        <label>Guild Type</label><br />
-        <input type="text" name="type" placeholder="Type of Guild" />
+        <label>Group Type</label><br />
+        <input type="text" name="type" placeholder="Type of Group" />
+    </div>
+    <div>
+        <label>Choose A Game:</label><br />
+        <select id="chooseGame" name="chooseGame">
+            <?php
+                foreach($gameList as $game){
+                    echo '<option value="'.$game.'">'.$game.'</option>';
+                }
+            ?>
+            <option value="terraria">Terraria</option>
+        </select>
     </div>
     <div>
         <label>Website Address</label><br />
@@ -58,11 +79,16 @@ if(count($_POST)>0){
     </div>
     <div>
         <label>Accepting New Members</label><br />
-        <input type="integer" name="openToMembers" placeholder="0" />
+        <input type="radio" id="Open" name="newMembers" value="1" />
+        <label for="Open">Open To All</label><br>
+        <input type="radio" id="Invite" name="newMembers" value="2" />
+        <label for="Invite">Invite Only</label><br>
+        <input type="radio" id="Closed" name="newMembers" value="3" />
+        <label for="Closed">Closed</label><br>
     </div>
     <div>
         <label>Bio</label><br />
-        <textarea name="guildBio" placeholder="Guild Description"></textarea><br />
+        <textarea name="bio" placeholder="Group Description"></textarea><br />
     </div>
 
     <div>
