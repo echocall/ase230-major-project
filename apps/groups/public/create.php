@@ -6,6 +6,7 @@ require_once APP_PATH.'/libraries/functions.php';
 
 /* TODO: 
     - change the 'Create Applications Array' into 'create Games array'
+    - feed the Group Owner information into the Members array.
     - put an explanation of how Accepting New Members works.
     - pick first game to be associated with from dropdown list
 */
@@ -15,21 +16,14 @@ $gameList=readCSVFileLine(APP_PATH.'/data/games.csv');
 $i=0;
 
 if(count($_POST)>0){
-    // create applications array
-    if($_POST['applicationName']!='')
+    // create games array
+    if($_POST['chooseGame']!='')
     {
-        // if the second field for application names is not empty.
-        if($_POST['applicationName1']!='')
-        {
-            $applications=array($_POST['applicationName']=>$_POST['applicationDescription'],$_POST['applicationName1']=>$_POST['applicationDescription1']);
-        }
-        else{
-            // only load the first two bits in.
-            $applications=array($_POST['applicationName']=>$_POST['applicationDescription']);
-        }
+      // write the data to array.
+      $games=array($_POST('games'));
     }else{
         // create empty array for applications.
-        $applications=array();
+        $games=array();
     }
     
     $result = createInJSON(APP_PATH.'/data/data.JSON',$applications);
@@ -66,7 +60,6 @@ if(count($_POST)>0){
                     echo '<option value="'.$game.'">'.$game.'</option>';
                 }
             ?>
-            <option value="terraria">Terraria</option>
         </select>
     </div>
     <div>

@@ -92,7 +92,6 @@ function readCSVFileLine($file){
         // check the line has characters in it.
         if(strlen($line)>0){
             // turn line into an array.
-            print_r($line);
             $content=explode(',',$line);
             }else{
                 continue;
