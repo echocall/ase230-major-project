@@ -9,6 +9,7 @@ require_once APP_PATH.'/libraries/functions.php';
     - feed the Group Owner information into the Members array.
     - put an explanation of how Accepting New Members works.
     - pick first game to be associated with from dropdown list
+    - Make better way of doing GroupID
 */
 
 $gameList=readCSVFileLine(APP_PATH.'/data/games.csv');
@@ -20,17 +21,34 @@ if(count($_POST)>0){
     if($_POST['chooseGame']!='')
     {
       // write the data to array.
-      $games=array($_POST('games'));
+      $games=array($_POST['chooseGame']);
     }else{
         // create empty array for applications.
         $games=array();
     }
-    
-    $result = createInJSON(APP_PATH.'/data/data.JSON',$applications);
+
+    // create Users array with owner
+    if($_POST['owner']!='')
+    {
+        // write the data to array.
+        $members=array($_POST['owner']=>'Owner');
+    }else{
+        // create empty array for applications.
+        $members=array();
+    }
+
+    print_r($games);
+    // assembles all the pieces into array
+    $newGroup=array('name'=>$_POST['groupName'],'id'=>$_POST['groupID'],'games'=>$games,'website'=>$_POST['website'],'webText'=>$_POST['webText'],'bio'=>$_POST['bio'],'members'=>$members,'freeToJoin'=>$_POST['newMembers']);
+
+
+    // sends array to be written to JSON file.
+    $result = createInJSON(APP_PATH.'/data/groups/groups.JSON',$newGroup);
 
     if($result==true)
     {
-        header('location: index.php');
+        // header('location: index.php');
+        echo 'alert("Successfully created a new group!");';
     }
 }else{
 ?>
@@ -38,19 +56,23 @@ if(count($_POST)>0){
 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
     <div>
         <label>Group Name</label><br />
-        <input type="text" name="groupName" placeholder="Group Name" />
+        <input type="text" name="groupName" placeholder="Group Name" required/>
     </div>
     <div>
         <label>Group ID</label><br />
-        <input type="text" name="groupID" placeholder="###" />
+        <input type="text" name="groupID" placeholder="###" required/>
     </div>
     <div>
         <label>Group Owner</label><br />
-        <input type="text" name="owner" placeholder="Username of Owner" />
+        <input type="text" name="owner" placeholder="Username of Owner" required/>
+    </div>
+    <div>
+        <label for='groupLogo'>Select a File</label><br />
+        <input type="file" id='groupLogo' name="groupLogo"/>
     </div>
     <div>
         <label>Group Type</label><br />
-        <input type="text" name="type" placeholder="Type of Group" />
+        <input type="text" name="type" placeholder="Type of Group" required/>
     </div>
     <div>
         <label>Choose A Game:</label><br />
@@ -76,12 +98,12 @@ if(count($_POST)>0){
         <label for="Open">Open To All</label><br>
         <input type="radio" id="Invite" name="newMembers" value="2" />
         <label for="Invite">Invite Only</label><br>
-        <input type="radio" id="Closed" name="newMembers" value="3" />
+        <input type="radio" id="Closed" name="newMembers" value="3" checked/>
         <label for="Closed">Closed</label><br>
     </div>
     <div>
         <label>Bio</label><br />
-        <textarea name="bio" placeholder="Group Description"></textarea><br />
+        <textarea name="bio" placeholder="Group Description" required></textarea><br />
     </div>
 
     <div>

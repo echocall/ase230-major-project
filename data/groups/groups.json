@@ -1,40 +1,60 @@
 [
-	{
-		"name":"ZapCo",
-		"id":"1",
-		"type":"Casual",
-		"profilePicture":"filenamehere.jpg",
-		"timeZone":"Eastern",
-		"games": ["Animal Crossing","Sun Haven","Stardew Valley"],
-        "website":"None",
-		"webText":"None",
-		"bio":"We enjoy getting together to casually socialize in games like Sun Haven or Animal Crossing. Show us your farms and islands!",
-		"members": {
-			"userName": "Owner",
-			"userName2": "Officer",
-			"uerName3":"rookie",
-			"uerName4":"rookie"
-		},
-		"freeToJoin":1
-	},
-	{
-		"name":"Fantasy Dynasty",
-		"id":"2",
-		"type":"Professional",
-		"profilePicture":"filenamehere.jpg",
-		"timeZone":"Central",		
-		"games": ["Minecraft"],
-        "website":"www.fantasydynasty.qte",
-		"webText":"View our gallery",
-		"bio":"A group of Minecraft builders with experience turning your daydreams into reality. You can see our gallery at the link. For business inquires contact us at: exampleemail@freemail.com",
-		"members": {
-			"GypsumRose": "Owner",
-			"Springdale203": "Project Lead",
-			"Jeff":"Organics Builder",
-            "Aquarius_Aggravation":"Architectural Builder",
-            "DaisyChain":"Builder",
-            "xXnoscopeXx":"Builder"
-		},
-		"freeToJoin":3
-	}
+    {
+        "name": "ZapCo",
+        "id": "1",
+        "type": "Casual",
+        "profilePicture": "filenamehere.jpg",
+        "timeZone": "Eastern",
+        "games": [
+            "Animal Crossing",
+            "Sun Haven",
+            "Stardew Valley"
+        ],
+        "website": "None",
+        "webText": "None",
+        "bio": "We enjoy getting together to casually socialize in games like Sun Haven or Animal Crossing. Show us your farms and islands!",
+        "members": {
+            "userName": "Owner",
+            "userName2": "Officer",
+            "uerName3": "rookie",
+            "uerName4": "rookie"
+        },
+        "freeToJoin": 1
+    },
+    {
+        "name": "Fantasy Dynasty",
+        "id": "2",
+        "type": "Professional",
+        "profilePicture": "filenamehere.jpg",
+        "timeZone": "Central",
+        "games": [
+            "Minecraft"
+        ],
+        "website": "www.fantasydynasty.qte",
+        "webText": "View our gallery",
+        "bio": "A group of Minecraft builders with experience turning your daydreams into reality. You can see our gallery at the link. For business inquires contact us at: exampleemail@freemail.com",
+        "members": {
+            "GypsumRose": "Owner",
+            "Springdale203": "Project Lead",
+            "Jeff": "Organics Builder",
+            "Aquarius_Aggravation": "Architectural Builder",
+            "DaisyChain": "Builder",
+            "xXnoscopeXx": "Builder"
+        },
+        "freeToJoin": 3
+    },
+    {
+        "name": "TestGroup",
+        "id": "5",
+        "games": [
+            "All"
+        ],
+        "website": "",
+        "webText": "",
+        "bio": "test group please ignore.",
+        "members": {
+            "sassafrass": "Owner"
+        },
+        "freeToJoin": "3"
+    }
 ]

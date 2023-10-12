@@ -102,8 +102,34 @@ function readCSVFileLine($file){
     fclose($fp);
 }
 
+function createInJSON($file,$newItem){
+    // takes an array to add to JSON file.
+    if(!file_exists($file) || !is_readable($file)) return false;
 
-function getGuildRanks($array, $guildID){
+    // read file.
+    $originalContent=file_get_contents($file);
+
+    // convert string from file into a PHP array
+    $content=json_decode($originalContent,true);
+    // add the new item into the array
+    array_push($content,$newItem);
+
+    // Encode the array into a JSON string
+    $content=json_encode($content,JSON_PRETTY_PRINT);
+    // Save the file
+   file_put_contents($file,$content);
+
+    return true;
+}
+
+function newGroupAsArray(){
+    // assemble the form info into an array.
+
+
+    return $newgroup;
+}
+
+function getGroupRanks($array, $groupID){
     // get the ranks of a specific guild
     $guildRanks = array(); 
     $index = 0;
@@ -111,8 +137,8 @@ function getGuildRanks($array, $guildID){
     // step through the array of all Guild Ranks
     for($index; i < count($array); $index++){
         // if guildID matches target guildID, write info off.
-        if($array[0] == $guildID){
-            $guildRanks = $array[index];
+        if($array[0] == $groupID){
+            $groupRanks = $array[index];
             break;
         }else{
             continue;
