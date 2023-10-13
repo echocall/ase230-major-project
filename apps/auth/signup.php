@@ -37,7 +37,7 @@ if(count($_POST)>0){
     }elseif(!isset($_POST['email'][0]) || !validate_email($_POST["email"])){
         $email_error = "Please enter a valid email";
     }elseif(!isset($_POST['password'][0]) || !validate_password($_POST["password"])){
-        $password_error = "Please enter a password with 8 characters, an uppercase letter, a lowercase letter, a digit, and a special character";
+        $password_error = "Please enter a password<br>with 8 characters, an<br>uppercase letter, a<br>lowercase letter, a<br>digit, and a special<br>character";
     }elseif(!isset($_POST['password_conf'][0]) || !check_confirm_password($_POST["password"], $_POST["password_conf"])){
         $password_conf_error = "Passwords do not match";
     }else{  # All fields are valid
