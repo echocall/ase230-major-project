@@ -3,23 +3,21 @@
         "name": "ZapCo",
         "id": "1",
         "type": "Casual",
-        "profilePicture": "filenamehere.jpg",
-        "timeZone": "Eastern",
         "games": [
             "Animal Crossing",
             "Sun Haven",
             "Stardew Valley"
         ],
         "website": "None",
-        "webText": "None",
-        "bio": "We enjoy getting together to casually socialize in games like Sun Haven or Animal Crossing. Show us your farms and islands!",
+        "webText": "",
+        "bio": "Absolute Alteration.",
         "members": {
             "userName": "Owner",
             "userName2": "Officer",
-            "uerName3": "rookie",
-            "uerName4": "rookie"
+            "uerName3": "Newbie",
+            "uerName4": "Newbie"
         },
-        "freeToJoin": 1
+        "freeToJoin": "3"
     },
     {
         "name": "Fantasy Dynasty",
@@ -46,6 +44,7 @@
     {
         "name": "TestGroup",
         "id": "5",
+        "type": "Casual",
         "games": [
             "All"
         ],

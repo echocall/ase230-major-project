@@ -14,15 +14,14 @@ function readJSONFile($file){
     return $content;
     fclose($fp);
 }
-
 // returns a single guild's information from the larger array.
-function getGuild($array,$index){
+function getGroup($array,$index){
     $guild = $array[$index];
 
     return $guild;
 }
-
-function guildJoinStatus($int){
+// Translates a group's join status from a number to a string.
+function groupJoinStatus($int){
     switch($int){
         case 1:
             $statusAsText = 'Open';
@@ -37,7 +36,7 @@ function guildJoinStatus($int){
 
     return $statusAsText;
 }
-
+// pulls data from a multiline CSV file.
 function readCSVFile($file){
     // pulls info from CSV file.
     // check if file exists and is readable. Stolen from bit of code Jacob shared
@@ -59,7 +58,6 @@ function readCSVFile($file){
         // check the line has characters in it.
         if(strlen($line)>0){
             // turn line into an array.
-            print_r($line);
             $content=explode(',',$line);
             array_push($outerArray,$content);
             }else{
@@ -70,7 +68,7 @@ function readCSVFile($file){
     // close the file.
     fclose($fp);
 }
-
+// Reads a single-line csv file, like games.csv
 function readCSVFileLine($file){
     // pulls info from CSV file.
     // check if file exists and is readable. Stolen from bit of code Jacob shared
@@ -101,14 +99,12 @@ function readCSVFileLine($file){
     // close the file.
     fclose($fp);
 }
-
+// Creates a new group in the preexisting JSON file.
 function createInJSON($file,$newItem){
     // takes an array to add to JSON file.
     if(!file_exists($file) || !is_readable($file)) return false;
-
     // read file.
     $originalContent=file_get_contents($file);
-
     // convert string from file into a PHP array
     $content=json_decode($originalContent,true);
     // add the new item into the array
@@ -121,30 +117,64 @@ function createInJSON($file,$newItem){
 
     return true;
 }
+// Updates a preexisting group in groups.json
+// TODO: update to use newGroupAsArray
+function  updateInJSON($file,$array,$index){
+    // read file.
+    $outerTargetArray=file_get_contents($file);
+    // convert string into a PHP array
+    $outerTargetArray=json_decode($outerTargetArray,true);
 
-function newGroupAsArray(){
-    // assemble the form info into an array.
+   // update the element
+   $outerTargetArray[$index]=$array;
 
+   // Encode the array into a JSON string
+   $outerTargetArray=json_encode($outerTargetArray,JSON_PRETTY_PRINT);
+   // Save the file
+   file_put_contents($file,$outerTargetArray);
 
-    return $newgroup;
+    return true;
 }
+ // assemble the form info into an array.
+// TODO: Format $_POST data into array for createInJSON and updateInJSON
+function newArrayBuilder($games,$members){
+    $webText="";
+    $webLink="";
+    // check values for website and webText
+    if($_POST['website'] == ''){
+        $webLink = '#';
+    }
+    else{
+        $webLink = $_POST['website'];
+    }
+    if($_POST['webText']==''){
+        $webText == 'None';
+    }else{
+        $webText == $_POST['webText'];
+    }
 
+    $updatedTarget=array('name'=>$_POST['groupName'],'id'=>$_POST['groupID'],'type'=>$_POST['type'],'games'=>$games,'website'=>$webLink,'webText'=>$webText,'bio'=>$_POST['bio'],'members'=>$members,'freeToJoin'=>$_POST['newMembers']);
+   
+   
+    return $updatedTarget;
+}
+// Gets a specific Group's ranks from the CSV file ranks.csv
 function getGroupRanks($array, $groupID){
     // get the ranks of a specific guild
-    $guildRanks = array(); 
+    $groupRanks = array(); 
     $index = 0;
-
+    
     // step through the array of all Guild Ranks
-    for($index; i < count($array); $index++){
+    foreach($array as $rankList)
+    {
         // if guildID matches target guildID, write info off.
-        if($array[0] == $groupID){
-            $groupRanks = $array[index];
+        if($rankList[$index] == $groupID){
+            $groupRanks = $rankList;
             break;
         }else{
             continue;
         }
-        
     }
 
-    return $guildRanks;
+    return $groupRanks;
 }

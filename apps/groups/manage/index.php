@@ -13,11 +13,11 @@ echo '<!-- About section-->
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
                 <h2>Groups</h2>
-                <p class="lead">Browse the groups open to the public to find your perfect match or create your own:</p> | 
+                <p class="lead">Browse the guilds open to the public to find your perfect match or create your own:</p> | 
                 <a href="create.php?">Create A Group</a>';
                 foreach($groups as $guild){
                     $members=$guild['members'];
-                    $status=guildJoinStatus($guild['freeToJoin']);
+                    $status=groupJoinStatus($guild['freeToJoin']);
                 ?>
                     <div>
                         <h3><?= $guild['name'] ?></h3>

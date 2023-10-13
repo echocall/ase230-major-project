@@ -13,7 +13,6 @@ require_once APP_PATH.'/libraries/functions.php';
 */
 
 $gameList=readCSVFileLine(APP_PATH.'/data/games.csv');
-
 $i=0;
 
 if(count($_POST)>0){
@@ -37,10 +36,8 @@ if(count($_POST)>0){
         $members=array();
     }
 
-    print_r($games);
     // assembles all the pieces into array
-    $newGroup=array('name'=>$_POST['groupName'],'id'=>$_POST['groupID'],'games'=>$games,'website'=>$_POST['website'],'webText'=>$_POST['webText'],'bio'=>$_POST['bio'],'members'=>$members,'freeToJoin'=>$_POST['newMembers']);
-
+    $newGroup=array('name'=>$_POST['groupName'],'id'=>$_POST['groupID'],'type'=>$_post['type'],'games'=>$games,'website'=>$_POST['website'],'webText'=>$_POST['webText'],'bio'=>$_POST['bio'],'members'=>$members,'freeToJoin'=>$_POST['newMembers']);
 
     // sends array to be written to JSON file.
     $result = createInJSON(APP_PATH.'/data/groups/groups.JSON',$newGroup);
