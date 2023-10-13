@@ -28,7 +28,7 @@ $ranks=getGroupRanks($allRanks,$guild['id'] );
 
 if(count($_POST)>0){
     // send information to array builder.
-    $updatedGroup=newArrayBuilder($guild['games'],$guild['members']);
+    $updatedGroup=newGroupArrayBuilder($guild['games'],$guild['members']);
     // write edit to file
     $result=updateInJSON(APP_PATH.'/data/groups/groups.JSON',$updatedGroup,$index);
 

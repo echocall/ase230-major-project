@@ -1,19 +1,36 @@
 <?php  
     // hold the functions for interacting with the data of groups/guilds.
 
-// reads json file and turns it into an array.
-function readJSONFile($file){
-    
-    // $file=fopen($fp,'r');
-    // check if file exists and is readable. Stolen from bit of code Jacob shared
-    if(!file_exists($file) || !is_readable($file)) return false;
-    // get content from the file
-    $content=file_get_contents($file);
-    $content=json_decode($content,true);
+// User Specific Functions
+// Translates a users's message status from a number to a string.
+function userMessageStatus($boolean){
+    switch($boolean){
+        case true:
+            $statusAsText = 'Open';
+            break;
+        case false:
+            $statusAsText = 'Closed';
+            break;
+    }
 
-    return $content;
-    fclose($fp);
+    return $statusAsText;
 }
+// Translates a users's message status from a number to a string.
+function userInviteStatus($boolean){
+    switch($boolean){
+        case true:
+            $statusAsText = 'Yes';
+            break;
+        case false:
+            $statusAsText = 'No';
+            break;
+    }
+
+    return $statusAsText;
+}
+
+
+// Group Specific FUnctions
 // returns a single guild's information from the larger array.
 function getGroup($array,$index){
     $guild = $array[$index];
@@ -35,6 +52,62 @@ function groupJoinStatus($int){
     }
 
     return $statusAsText;
+}
+// assemble the form info into an array.
+// TODO: Format $_POST data into array for createInJSON and updateInJSON
+function newGroupArrayBuilder($games,$members){
+   $webText="";
+   $webLink="";
+   // check values for website and webText
+   if($_POST['website'] == ''){
+       $webLink = '#';
+   }
+   else{
+       $webLink = $_POST['website'];
+   }
+   if($_POST['webText']==''){
+       $webText == 'None';
+   }else{
+       $webText == $_POST['webText'];
+   }
+
+   $updatedTarget=array('name'=>$_POST['groupName'],'id'=>$_POST['groupID'],'type'=>$_POST['type'],'games'=>$games,'website'=>$webLink,'webText'=>$webText,'bio'=>$_POST['bio'],'members'=>$members,'freeToJoin'=>$_POST['newMembers']);
+  
+   return $updatedTarget;
+}
+// Gets a specific Group's ranks from the CSV file ranks.csv
+function getGroupRanks($array, $groupID){
+   // get the ranks of a specific guild
+   $groupRanks = array(); 
+   $index = 0;
+   
+   // step through the array of all Guild Ranks
+   foreach($array as $rankList)
+   {
+       // if guildID matches target guildID, write info off.
+       if($rankList[$index] == $groupID){
+           $groupRanks = $rankList;
+           break;
+       }else{
+           continue;
+       }
+   }
+
+   return $groupRanks;
+}
+// General Use Functions
+// reads json file and turns it into an array.
+function readJSONFile($file){
+    
+    // $file=fopen($fp,'r');
+    // check if file exists and is readable. Stolen from bit of code Jacob shared
+    if(!file_exists($file) || !is_readable($file)) return false;
+    // get content from the file
+    $content=file_get_contents($file);
+    $content=json_decode($content,true);
+
+    return $content;
+    fclose($fp);
 }
 // pulls data from a multiline CSV file.
 function readCSVFile($file){
@@ -135,50 +208,6 @@ function  updateInJSON($file,$array,$index){
 
     return true;
 }
- // assemble the form info into an array.
-// TODO: Format $_POST data into array for createInJSON and updateInJSON
-function newArrayBuilder($games,$members){
-    $webText="";
-    $webLink="";
-    // check values for website and webText
-    if($_POST['website'] == ''){
-        $webLink = '#';
-    }
-    else{
-        $webLink = $_POST['website'];
-    }
-    if($_POST['webText']==''){
-        $webText == 'None';
-    }else{
-        $webText == $_POST['webText'];
-    }
-
-    $updatedTarget=array('name'=>$_POST['groupName'],'id'=>$_POST['groupID'],'type'=>$_POST['type'],'games'=>$games,'website'=>$webLink,'webText'=>$webText,'bio'=>$_POST['bio'],'members'=>$members,'freeToJoin'=>$_POST['newMembers']);
-   
-   
-    return $updatedTarget;
-}
-// Gets a specific Group's ranks from the CSV file ranks.csv
-function getGroupRanks($array, $groupID){
-    // get the ranks of a specific guild
-    $groupRanks = array(); 
-    $index = 0;
-    
-    // step through the array of all Guild Ranks
-    foreach($array as $rankList)
-    {
-        // if guildID matches target guildID, write info off.
-        if($rankList[$index] == $groupID){
-            $groupRanks = $rankList;
-            break;
-        }else{
-            continue;
-        }
-    }
-
-    return $groupRanks;
-}
-
 // Removes a specific Group from the JSON file
 function deleteFromJSON($file,$index){
     // read file.

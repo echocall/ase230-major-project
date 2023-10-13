@@ -37,7 +37,7 @@ if(count($_POST)>0){
     }
 
     // assembles all the pieces into array
-    $newGroup=newArrayBuilder($games,$members);
+    $newGroup=newGroupArrayBuilder($games,$members);
 
     // sends array to be written to JSON file.
     $result = createInJSON(APP_PATH.'/data/groups/groups.JSON',$newGroup);
