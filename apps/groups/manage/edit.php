@@ -13,7 +13,7 @@ require_once APP_PATH.'/libraries/functions.php';
 // Loading in a selected group.
 $groups=readJSONFile(APP_PATH.'/data/groups/groups.JSON');
 $index=$_GET['index'];
-$guild=getGroup($groups,$index);
+$guild=getItem($groups,$index);
 // seperate members into their own array.
 $members = $guild['members'];
 // get the keys
@@ -86,7 +86,7 @@ if(count($_POST)>0){
         <label for="Open">Open To All</label><br>
         <input type="radio" id="Invite" name="newMembers" value="2" />
         <label for="Invite">Invite Only</label><br>
-        <input type="radio" id="Closed" name="newMembers" value="3" checked/>
+        <input type="radio" id="Closed" name="newMembers" value="3"/>
         <label for="Closed">Closed</label><br>
     </div>
     <div>

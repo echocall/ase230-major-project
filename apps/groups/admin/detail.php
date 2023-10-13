@@ -7,7 +7,7 @@ $groups=readJSONFile(APP_PATH.'/data/groups/groups.JSON');
 
 $index=$_GET['index'];
 
-$guild=getItem($groups,$index);
+$guild=getGroup($groups,$index);
 
 // seperate members into their own array.
 $members = $guild['members'];

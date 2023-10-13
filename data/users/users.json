@@ -1,42 +1,41 @@
 [
-	{
-		"username":"absoluteions",
-		"name":"Frank",
-		"email":"grumblepack@hotmail.com",
-		"password":"hahano",
-		"profilePicture":"filenamehere.jpg",
-		"ageRange":"25+",
-		"timeZone":"Eastern",
-		"playTime":"8pm-11pm",
-		"games": {
-			"World of Warcraft": "LFG for raids, Tank Main",
-			"ARK:Survival Evolved": "US-East PVP server",
-			"Starship Troopers":"LFG Veteran Horde Mode. Lets shoot bugs!"
-		},
-		"otherAccounts":{
-			"Steam":"GrassBag",
-			"Discord":"oldgrassbag"
-		},
-		"openToInvite":true,
-		"messagesOpen":false
-	},
-	{
-		"username":"pixelGraphics",
-		"name":"Jess",
-		"email":"indieart4ever@yahoo.com",
-		"password":"teeheefiller",
-		"ageRange":"18+",
-		"timeZone":"Central",
-		"playTime":"4pm-7pm",
-		"games": {
-			"Rocket League": "LFG semi-competitive",
-			"Minecraft": "Creative Builder looking for team."
-		},
-		"otherAccounts":{
-			"Steam":"PixelSTUDio",
-			"Discord":"pixelstudio"
-		},
-		"openToInvite":true,
-		"messagesOpen":true
-	}
+    {
+        "username": "absoluteions",
+        "name": "Frank",
+        "email": "grumblepack@hotmail.com",
+        "password": "hahano",
+        "profilePicture": "filenamehere.jpg",
+        "ageRange": "25+",
+        "timeZone": "Eastern",
+        "playTime": "8pm-11pm",
+        "games": {
+            "World of Warcraft": "LFG for raids, Tank Main",
+            "ARK:Survival Evolved": "US-East PVP server",
+            "Starship Troopers": "LFG Veteran Horde Mode. Lets shoot bugs!"
+        },
+        "otherAccounts": {
+            "Steam": "GrassBag",
+            "Discord": "oldgrassbag"
+        },
+        "openToInvite": true,
+        "messagesOpen": false
+    },
+    {
+        "username": "pixelGraphics",
+        "name": "Jesse",
+        "email": "indieart4ever@yahoo.com",
+        "ageRange": "18+",
+        "timeZone": "Eastern",
+        "playTime": "4pm-7pm",
+        "games": {
+            "Rocket League": "LFG semi-competitive",
+            "Minecraft": "Creative Builder looking for team."
+        },
+        "otherAccounts": {
+            "Steam": "PixelSTUDio",
+            "Discord": "pixelstudio"
+        },
+        "openToInvite": null,
+        "messagesOpen": null
+    }
 ]

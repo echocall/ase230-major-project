@@ -27,16 +27,16 @@ function userInviteStatus($boolean){
     }
 
     return $statusAsText;
-}
+}// assemble the form info into an array.
+function newUserArrayBuilder($username,$password,$profilePicture,$games,$otherAccounts){
+
+    $updatedTarget=array('username'=>$username,'name'=>$_POST['name'],'email'=>$_POST['email'],'ageRange'=>$_POST['ageRange'],'timeZone'=>$_POST['timeZone'],'playTime'=>$_POST['playTime'],'games'=>$games,'otherAccounts'=>$otherAccounts,'openToInvite'=>$_POST['openToInvite'],'messagesOpen'=>$_POST['messagesOpen']);
+   
+    return $updatedTarget;
+ }
 
 
 // Group Specific FUnctions
-// returns a single guild's information from the larger array.
-function getGroup($array,$index){
-    $guild = $array[$index];
-
-    return $guild;
-}
 // Translates a group's join status from a number to a string.
 function groupJoinStatus($int){
     switch($int){
@@ -54,7 +54,6 @@ function groupJoinStatus($int){
     return $statusAsText;
 }
 // assemble the form info into an array.
-// TODO: Format $_POST data into array for createInJSON and updateInJSON
 function newGroupArrayBuilder($games,$members){
    $webText="";
    $webLink="";
@@ -95,6 +94,7 @@ function getGroupRanks($array, $groupID){
 
    return $groupRanks;
 }
+
 // General Use Functions
 // reads json file and turns it into an array.
 function readJSONFile($file){
@@ -192,7 +192,7 @@ function createInJSON($file,$newItem){
 }
 // Updates a preexisting group in groups.json
 // TODO: update to use newGroupAsArray
-function  updateInJSON($file,$array,$index){
+function updateInJSON($file,$array,$index){
     // read file.
     $outerTargetArray=file_get_contents($file);
     // convert string into a PHP array
@@ -227,4 +227,10 @@ function deleteFromJSON($file,$index){
    // file_put_contents($file,$updatedList);
 
     return true;
+}
+// returns a single Item's information from the larger array.
+function getItem($array,$index){
+    $item = $array[$index];
+
+    return $item;
 }

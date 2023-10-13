@@ -20,8 +20,8 @@ $i=0;
 ?>
     <div>
         <a href="index.php">Return to Users List</a>
-        <h3><?= $user['name'] ?></h3>
-        <p>Username: <?= $user['username'] ?> | Time Zone: <?= $user['timeZone'] ?> | Open To Invite: <?= $inviteStatus ?> </p>
+        <h3><?= $user['username'] ?></h3>
+        <p><b>Name:</b> <?= $user['name'] ?> | Time Zone: <?= $user['timeZone'] ?> | Open To Invite: <?= $inviteStatus ?> </p>
         <?php
             while($i < count($games)){
                 echo '<p><b>'.$gameName[$i].'</b>: '.$games[$gameName[$i]].'</p>';

@@ -7,15 +7,14 @@ $users=readJSONFile(APP_PATH.'/data/users/users.JSON');
 $usersKey = array_keys($users);
 
 $index=0;
+$i=0;
 
 echo '<!-- About section-->
 <section id="about">
     <div class="container px-4">
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
-                <h2>Guilds</h2>
-                <a href="create.php?">Create A Guild</a> 
-                <p class="lead">Browse the guilds open to the public to find your perfect match:</p>';
+                <h2>Users</h2>';
 
                 foreach($users as $user){
                     $games=$user['games'];
@@ -33,7 +32,7 @@ echo '<!-- About section-->
                                 $i++;
                             }
                         ?>
-                        <a href="#">Message this User</a> | Messages: <?= $messageStatus ?>
+                        <a href="#">Message this User</a> | Messages: <?= $messageStatus ?> | 
                         <a href="detail.php?index=<?= $index ?>">View Details</a> | <a href="edit.php?index=<?= $index ?>">Edit User</a>
                     </div>
                     <hr />
