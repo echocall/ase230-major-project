@@ -44,8 +44,7 @@ if(count($_POST)>0){
 
     if($result==true)
     {
-        // header('location: index.php');
-        echo 'alert("Successfully created a new group!");';
+        header('location: index.php');
     }
 }else{
 ?>

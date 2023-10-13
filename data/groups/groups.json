@@ -55,5 +55,20 @@
             "sassafrass": "Owner"
         },
         "freeToJoin": "3"
+    },
+    {
+        "name": "For Deletion",
+        "id": "6",
+        "type": "Casual",
+        "games": [
+            "Variety"
+        ],
+        "website": "www.haha.no",
+        "webText": "",
+        "bio": "Filler text filler text\r\nSphinx of black quartz judge my vow!\r\n\r\nThe quick brown fox jumps over the lazy dog.",
+        "members": {
+            "Omega": "Owner"
+        },
+        "freeToJoin": "3"
     }
 ]

@@ -13,7 +13,7 @@ echo '<!-- About section-->
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
                 <h2>Groups</h2>
-                <p class="lead">Browse the guilds open to the public to find your perfect match or create your own:</p> | 
+                <p class="lead">Browse the guilds open to the public to find your perfect match or create your own:</p>  
                 <a href="create.php?">Create A Group</a>';
                 foreach($groups as $guild){
                     $members=$guild['members'];
@@ -23,7 +23,7 @@ echo '<!-- About section-->
                         <h3><?= $guild['name'] ?></h3>
                         <p>Owner: <?= array_key_first($members); ?> | Group Type: <?= $guild['type'] ?> | Open to Join: <?= $status ?> </p>
                         <p><?= $guild['bio'] ?> </p><br />
-                        <a href="detail.php?index=<?= $index ?>">View Details</a> 
+                        <a href="detail.php?index=<?= $index ?>">View Details</a>
                     </div>
                     <hr />
                 <?php

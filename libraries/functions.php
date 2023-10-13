@@ -178,3 +178,24 @@ function getGroupRanks($array, $groupID){
 
     return $groupRanks;
 }
+
+// Removes a specific Group from the JSON file
+function deleteFromJSON($file,$index){
+    // read file.
+    $originalFile=file_get_contents($file);
+    // convert string into a PHP array
+    $originalFile=json_decode($originalFile,true);
+
+   // remove the element
+   unset($originalFile[$index]);
+   
+   // restores array as index array.
+   $updatedList=array_values($originalFile);
+
+   // Encode the array into a JSON string
+   $updatedList=json_encode($updatedList,JSON_PRETTY_PRINT);
+   // Save the file
+   // file_put_contents($file,$updatedList);
+
+    return true;
+}

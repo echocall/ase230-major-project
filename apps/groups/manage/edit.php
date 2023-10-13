@@ -33,7 +33,7 @@ if(count($_POST)>0){
     $result=updateInJSON(APP_PATH.'/data/groups/groups.JSON',$updatedGroup,$index);
 
     if($result==true){
-        echo 'alert("Update success!)';
+        header('location: index.php');
     }
 }else{
 ?>
@@ -95,7 +95,7 @@ if(count($_POST)>0){
     </div>
 
     <div>
-	    <button type="submit" a href="index.php">Edit</button>
+	    <button type="submit" a href="detail.php?index=<?= $index ?>">Edit</button>
     </div>
 </form>
 <?php 
