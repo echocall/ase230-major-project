@@ -5,7 +5,6 @@
         "email": "grumblepack@hotmail.com",
         "password": "hahano",
         "profilePicture": "filenamehere.jpg",
-        "ageRange": "25+",
         "timeZone": "Eastern",
         "playTime": "8pm-11pm",
         "games": {
@@ -24,7 +23,6 @@
         "username": "pixelGraphics",
         "name": "Jesse",
         "email": "indieart4ever@yahoo.com",
-        "ageRange": "18+",
         "timeZone": "Eastern",
         "playTime": "4pm-7pm",
         "games": {
@@ -35,7 +33,24 @@
             "Steam": "PixelSTUDio",
             "Discord": "pixelstudio"
         },
-        "openToInvite": null,
-        "messagesOpen": null
+        "openToInvite": false,
+        "messagesOpen": true
+    },
+    {
+        "username": "testUser",
+        "name": "walnut",
+        "email": "acorn@nut.nut",
+        "timeZone": "chestnut",
+        "playTime": "4pm-7pm",
+        "games": {
+            "Rocket League": "pistachio",
+            "Minecraft": "macademia"
+        },
+        "otherAccounts": {
+            "Steam": "testuser",
+            "Discord": "pleaseIgnore"
+        },
+        "openToInvite": false,
+        "messagesOpen": false
     }
 ]

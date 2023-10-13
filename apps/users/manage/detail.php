@@ -25,7 +25,7 @@ $int=0;
         <a href="index.php">Return to Users List</a>
         <h3><?= $user['username'] ?></h3>
         <p><b>Name:</b> <?= $user['name'] ?> | <b>Time Zone:</b> <?= $user['timeZone'] ?> | <b>Open To Invite:</b> <?= $inviteStatus ?> </p>
-        <p><b>Age Range:</b> <?= $user['ageRange'] ?> | <b>Play Time:</b> <?= $user['playTime'] ?> </p>
+        <p><b>Play Time:</b> <?= $user['playTime'] ?> </p>
         <?php
             while($i < count($games)){
                 echo '<p><b>'.$gameName[$i].'</b>: '.$games[$gameName[$i]].'</p>';

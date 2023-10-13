@@ -1,10 +1,6 @@
 <?php
-// EDIT.php - Allow a user to change their own details
-/* TODO:
-    - allow user to add/edit other account information.
-    - allow user to add/edit other games.
-    - allow user to add a picture.
-*/
+// DELETE.php: remove an already existing user.
+
 require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 
@@ -28,17 +24,16 @@ $int = 0;
 
 // seperate members into their own a
 if(count($_POST)>0){
-    // send information to array builder.
-    $updatedUser=newUserArrayBuilder($user['username'],$user['password'],$user['profilePicture'],$user['games'],$user['otherAccounts']);
-    // write edit to file
-   $result=updateInJSON(APP_PATH.'/data/users/users.JSON',$updatedUser,$index);
+    // delete the file.
+    $result=deleteFromJSON(APP_PATH.'/data/users/users.JSON',$index);
 
-   if($result==true){
-        header('location: detail.php?index='.$index);
-    } 
+    if($result==true){
+      // header('location: index.php');
+    }
 }else{
 ?>
-<a href="detail.php?index=<?= $index ?>">Return to Profile</a>
+<a href="index.php">Return to Users List</a>
+<p>Are you sure you want to delete this user?</p>
 <form action="<?= $_SERVER['PHP_SELF'] ?>?index=<?= $_GET['index'] ?>" method="POST">
     <div>
         <label>Username</label><br />
@@ -46,33 +41,19 @@ if(count($_POST)>0){
     </div>
     <div>
         <label>Name</label><br />
-        <input type="text" name="name" value="<?= $user['name'] ?>"/>
+        <input type="text" name="name" value="<?= $user['name'] ?>" disabled/>
     </div>
     <div>
         <label>Email</label><br />
-        <input type="email" name="email" value="<?= $user['email'] ?>"/>
+        <input type="email" name="email" value="<?= $user['email'] ?>" disabled/>
     </div>
     <div>
         <label>Timezone</label><br />
-        <input type="text" name="timeZone" value="<?= $user['timeZone'] ?>"/>
+        <input type="text" name="timeZone" value="<?= $user['timeZone'] ?>" disabled/>
     </div>
     <div>
         <label>Play Time</label><br />
-        <input type="text" name="playTime" value="<?= $user['playTime'] ?>"/>
-    </div>
-    <div>
-        <label>Looking for Group</label><br />
-        <input type="radio" id="lfgYes" name="openToInvite" value="true" />
-        <label for="lfgYes">Yes</label><br>
-        <input type="radio" id="lfgNo" name="openToInvite" value="false" />
-        <label for="lfgNo">No</label><br>
-    </div>
-    <div>
-        <label>Open to Messages</label><br />
-        <input type="radio" id="messagesYes" name="messagesOpen" value="true" />
-        <label for="messagesYes">Yes</label><br>
-        <input type="radio" id="messagesNo" name="messagesOpen" value="false" />
-        <label for="messagesNo">No</label><br>
+        <input type="text" name="playTime" value="<?= $user['playTime'] ?>" disabled/>
     </div>
     <div>
         <label class="tooltip">Games</label><br />
@@ -97,8 +78,7 @@ if(count($_POST)>0){
         ?>
     </div>
     <div>
-    <div>
-	    <button type="submit" a href="detail.php?index=<?= $index ?>">Edit</button>
+	    <button type="submit" a href="index.php">Delete</button>
     </div>
 </form>
 <?php 

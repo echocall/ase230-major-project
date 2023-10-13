@@ -5,10 +5,7 @@ require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 
 /* TODO: 
-    - change the 'Create Applications Array' into 'create Games array'
-    - feed the Group Owner information into the Members array.
     - put an explanation of how Accepting New Members works.
-    - pick first game to be associated with from dropdown list
     - Make better way of doing GroupID
 */
 

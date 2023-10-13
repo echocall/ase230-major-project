@@ -30,7 +30,7 @@ function userInviteStatus($boolean){
 }// assemble the form info into an array.
 function newUserArrayBuilder($username,$password,$profilePicture,$games,$otherAccounts){
 
-    $updatedTarget=array('username'=>$username,'name'=>$_POST['name'],'email'=>$_POST['email'],'ageRange'=>$_POST['ageRange'],'timeZone'=>$_POST['timeZone'],'playTime'=>$_POST['playTime'],'games'=>$games,'otherAccounts'=>$otherAccounts,'openToInvite'=>$_POST['openToInvite'],'messagesOpen'=>$_POST['messagesOpen']);
+    $updatedTarget=array('username'=>$username,'name'=>$_POST['name'],'email'=>$_POST['email'],'timeZone'=>$_POST['timeZone'],'playTime'=>$_POST['playTime'],'games'=>$games,'otherAccounts'=>$otherAccounts,'openToInvite'=>$_POST['openToInvite'],'messagesOpen'=>$_POST['messagesOpen']);
    
     return $updatedTarget;
  }
@@ -215,11 +215,17 @@ function deleteFromJSON($file,$index){
     // convert string into a PHP array
     $originalFile=json_decode($originalFile,true);
 
+    print_r($originalFile);
+    echo '<br><br>';
+
    // remove the element
    unset($originalFile[$index]);
    
    // restores array as index array.
    $updatedList=array_values($originalFile);
+
+   print_r($updatedList);
+   echo '<br><br>';
 
    // Encode the array into a JSON string
    $updatedList=json_encode($updatedList,JSON_PRETTY_PRINT);

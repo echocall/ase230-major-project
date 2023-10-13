@@ -5,7 +5,7 @@ require_once APP_PATH.'/libraries/functions.php';
 
 $groups=readJSONFile(APP_PATH.'/data/groups/groups.JSON');
 $index=$_GET['index'];
-$guild=getItem($groups,$index);
+$guild=getGroup($groups,$index);
 
 // seperate members into their own array.
 $members = $guild['members'];
@@ -35,17 +35,17 @@ if(count($_POST)>0){
 <form action="<?= $_SERVER['PHP_SELF'] ?>?index=<?= $_GET['index'] ?>" method="POST">
     <div>
         <label>Group Name</label><br />
-        <input type="text" name="groupName" value="<?= $guild['name'] ?>" required/>
+        <input type="text" name="groupName" value="<?= $guild['name'] ?>" disabled/>
     </div>
     <div>
         <label>Group ID</label><br />
-        <input type="text" name="groupID" value="<?= $guild['id'] ?>" required/>
+        <input type="text" name="groupID" value="<?= $guild['id'] ?>" disabled/>
     </div>
     <div>
         <label>Group Owner</label><br />
         <select id="groupOwner" name="groupOwner">
         </select><br />
-        <input type="text" name="owner" value="<?= $membersKey[0] ?>" required/>
+        <input type="text" name="owner" value="<?= $membersKey[0] ?>" disabled/>
     </div>
     <div>
         <label class="tooltip">Members & Ranks</label><br />
@@ -64,15 +64,15 @@ if(count($_POST)>0){
     </div> */ ?>
     <div>
         <label>Group Type</label><br />
-        <input type="text" name="type" value="<?= $guild['type'] ?>" required/>
+        <input type="text" name="type" value="<?= $guild['type'] ?>" disabled/>
     </div>
     <div>
         <label>Website Address</label><br />
-        <input type="text" name="website" value="<?= $guild['website'] ?>" />
+        <input type="text" name="website" value="<?= $guild['website'] ?>" disabled/>
     </div>
     <div>
         <label>Website Text</label><br />
-        <input type="text" name="webText" value="<?= $guild['webText'] ?>"" />
+        <input type="text" name="webText" value="<?= $guild['webText'] ?>"" disabled/>
     </div>
     <div>
         <h4>Games:</h4>
@@ -93,7 +93,7 @@ if(count($_POST)>0){
     </div>
     <div>
         <label>Bio</label><br />
-        <textarea name="bio" placeholder="Group Description" required><?= $guild['bio'] ?></textarea><br />
+        <textarea name="bio" placeholder="Group Description" disabled><?= $guild['bio'] ?></textarea><br />
     </div>
     <div>
 	    <button type="submit" a href="index.php">Delete</button>
