@@ -1,0 +1,74 @@
+[
+    {
+        "name": "ZapCo",
+        "id": "1",
+        "type": "Casual",
+        "games": [
+            "Animal Crossing",
+            "Sun Haven",
+            "Stardew Valley"
+        ],
+        "website": "None",
+        "webText": "",
+        "bio": "Absolute Alteration.",
+        "members": {
+            "userName": "Owner",
+            "userName2": "Officer",
+            "uerName3": "Newbie",
+            "uerName4": "Newbie"
+        },
+        "freeToJoin": "1"
+    },
+    {
+        "name": "Fantasy Dynasty",
+        "id": "2",
+        "type": "Professional",
+        "profilePicture": "filenamehere.jpg",
+        "timeZone": "Central",
+        "games": [
+            "Minecraft"
+        ],
+        "website": "www.fantasydynasty.qte",
+        "webText": "View our gallery",
+        "bio": "A group of Minecraft builders with experience turning your daydreams into reality. You can see our gallery at the link. For business inquires contact us at: exampleemail@freemail.com",
+        "members": {
+            "GypsumRose": "Owner",
+            "Springdale203": "Project Lead",
+            "Jeff": "Organics Builder",
+            "Aquarius_Aggravation": "Architectural Builder",
+            "DaisyChain": "Builder",
+            "xXnoscopeXx": "Builder"
+        },
+        "freeToJoin": 3
+    },
+    {
+        "name": "TestGroup",
+        "id": "5",
+        "type": "Casual",
+        "games": [
+            "All"
+        ],
+        "website": "",
+        "webText": "",
+        "bio": "test group please ignore.",
+        "members": {
+            "sassafrass": "Owner"
+        },
+        "freeToJoin": "3"
+    },
+    {
+        "name": "For Deletion",
+        "id": "6",
+        "type": "Casual",
+        "games": [
+            "Variety"
+        ],
+        "website": "www.haha.no",
+        "webText": "",
+        "bio": "Filler text filler text\r\nSphinx of black quartz judge my vow!\r\n\r\nThe quick brown fox jumps over the lazy dog.",
+        "members": {
+            "Omega": "Owner"
+        },
+        "freeToJoin": "2"
+    }
+]

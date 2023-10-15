@@ -5,6 +5,7 @@
         "email": "grumblepack@hotmail.com",
         "password": "hahano",
         "ageRange": "25+",
+        "profilePicture": "filenamehere.jpg",
         "timeZone": "Eastern",
         "playTime": "8pm-11pm",
         "games": {
@@ -27,6 +28,20 @@
         "password": "teeheefiller",
         "ageRange": "18+",
         "timeZone": "Central",
+            "Starship Troopers": "LFG Veteran Horde Mode. Lets shoot bugs!"
+        },
+        "otherAccounts": {
+            "Steam": "GrassBag",
+            "Discord": "oldgrassbag"
+        },
+        "openToInvite": true,
+        "messagesOpen": false
+    },
+    {
+        "username": "pixelGraphics",
+        "name": "Jesse",
+        "email": "indieart4ever@yahoo.com",
+        "timeZone": "Eastern",
         "playTime": "4pm-7pm",
         "games": {
             "Rocket League": "LFG semi-competitive",
@@ -53,5 +68,26 @@
         "openToInvite": true,
         "messagesOpen": true,
         "admin": true
+            "Discord": "pixelstudio"
+        },
+        "openToInvite": false,
+        "messagesOpen": true
+    },
+    {
+        "username": "testUser",
+        "name": "walnut",
+        "email": "acorn@nut.nut",
+        "timeZone": "chestnut",
+        "playTime": "4pm-7pm",
+        "games": {
+            "Rocket League": "pistachio",
+            "Minecraft": "macademia"
+        },
+        "otherAccounts": {
+            "Steam": "testuser",
+            "Discord": "pleaseIgnore"
+        },
+        "openToInvite": false,
+        "messagesOpen": false
     }
 ]
