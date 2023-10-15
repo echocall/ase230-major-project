@@ -13,6 +13,9 @@
             "ARK:Survival Evolved": "US-East PVP server",
             "Starship Troopers": "LFG Veteran Horde Modes. Lets shoot bugs!"
         },
+        "groups": {
+            "Final Fantasy 14": "FF14 Raid Group"
+        },
         "otherAccounts": {
             "Steam": "grassedAndBagged",
             "Discord": "oldgrassbag"
@@ -27,25 +30,38 @@
         "email": "indieart4ever@yahoo.com",
         "password": "teeheefiller",
         "ageRange": "18+",
+        "profilePicture": "filenamehere.jpg",
         "timeZone": "Central",
+        "playTime": "8pm-11pm",
+        "games": {
             "Starship Troopers": "LFG Veteran Horde Mode. Lets shoot bugs!"
+        },
+        "groups": {
+            "Final Fantasy 14": "FF14 Raid Group"
         },
         "otherAccounts": {
             "Steam": "GrassBag",
             "Discord": "oldgrassbag"
         },
         "openToInvite": true,
-        "messagesOpen": false
+        "messagesOpen": false,
+        "admin": true
     },
     {
         "username": "pixelGraphics",
         "name": "Jesse",
         "email": "indieart4ever@yahoo.com",
+        "password": "hahano",
+        "ageRange": "25+",
+        "profilePicture": "filenamehere.jpg",
         "timeZone": "Eastern",
         "playTime": "4pm-7pm",
         "games": {
             "Rocket League": "LFG semi-competitive",
             "Minecraft": "Creative Builder looking for team."
+        },
+        "groups": {
+            "Final Fantasy 14": "FF14 Raid Group"
         },
         "otherAccounts": {
             "Steam": "PixelSTUDio",
@@ -60,34 +76,48 @@
         "name": "",
         "email": "jackmane1@mymail.nku.edu",
         "password": "$2y$10$0B9DLFCZE\/JaDrivmZlxeOtmHU5.wjAdrBuyFFaABOqzGAJ\/1L\/c6",
-        "ageRange": "",
-        "timeZone": "",
-        "playTime": "",
-        "games": [],
-        "otherAccounts": [],
-        "openToInvite": true,
-        "messagesOpen": true,
-        "admin": true
+        "ageRange": "25+",
+        "profilePicture": "filenamehere.jpg",
+        "timeZone": "Eastern",
+        "playTime": "8pm-11pm",
+        "games": {
+            "World of Warcraft": "LFG for raids, Tank Main",
+            "ARK:Survival Evolved": "US-East PVP server",
+            "Starship Troopers": "LFG Veteran Horde Modes. Lets shoot bugs!"
+        },
+        "groups": {
+            "Final Fantasy 14": "FF14 Raid Group"
+        },
+        "otherAccounts": {
+            "Steam": "grassedAndBagged",
             "Discord": "pixelstudio"
         },
         "openToInvite": false,
-        "messagesOpen": true
+        "messagesOpen": true,
+        "admin": true
     },
     {
         "username": "testUser",
         "name": "walnut",
         "email": "acorn@nut.nut",
+        "password": "hahano",
+        "ageRange": "25+",
+        "profilePicture": "filenamehere.jpg",
         "timeZone": "chestnut",
         "playTime": "4pm-7pm",
         "games": {
             "Rocket League": "pistachio",
             "Minecraft": "macademia"
         },
+        "groups": {
+            "Final Fantasy 14": "FF14 Raid Group"
+        },
         "otherAccounts": {
             "Steam": "testuser",
             "Discord": "pleaseIgnore"
         },
         "openToInvite": false,
-        "messagesOpen": false
+        "messagesOpen": false,
+        "admin": true
     }
 ]

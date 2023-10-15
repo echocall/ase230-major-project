@@ -62,7 +62,7 @@ if(count($_POST)>0){
             move_uploaded_file($_FILES['pfp']['tmp_name'], __DIR__ . '/../../data/users/images/' . $_POST['username'] . '_pfp.' . $extension);
         }
         $_SESSION['username']=$_POST['username'];
-        header('Location: ../home.php');
+        header('Location: ../index.php');
         die();
     }
 }
