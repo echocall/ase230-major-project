@@ -4,12 +4,30 @@
         "name": "Frank",
         "email": "grumblepack@hotmail.com",
         "password": "hahano",
+        "ageRange": "25+",
         "profilePicture": "filenamehere.jpg",
         "timeZone": "Eastern",
         "playTime": "8pm-11pm",
         "games": {
             "World of Warcraft": "LFG for raids, Tank Main",
             "ARK:Survival Evolved": "US-East PVP server",
+            "Starship Troopers": "LFG Veteran Horde Modes. Lets shoot bugs!"
+        },
+        "otherAccounts": {
+            "Steam": "grassedAndBagged",
+            "Discord": "oldgrassbag"
+        },
+        "openToInvite": true,
+        "messagesOpen": false,
+        "admin": true
+    },
+    {
+        "username": "pixelGraphics",
+        "name": "Pepper",
+        "email": "indieart4ever@yahoo.com",
+        "password": "teeheefiller",
+        "ageRange": "18+",
+        "timeZone": "Central",
             "Starship Troopers": "LFG Veteran Horde Mode. Lets shoot bugs!"
         },
         "otherAccounts": {
@@ -31,6 +49,25 @@
         },
         "otherAccounts": {
             "Steam": "PixelSTUDio",
+            "Discord": "pixelSupport"
+        },
+        "openToInvite": true,
+        "messagesOpen": true,
+        "admin": true
+    },
+    {
+        "username": "Rickles",
+        "name": "",
+        "email": "jackmane1@mymail.nku.edu",
+        "password": "$2y$10$0B9DLFCZE\/JaDrivmZlxeOtmHU5.wjAdrBuyFFaABOqzGAJ\/1L\/c6",
+        "ageRange": "",
+        "timeZone": "",
+        "playTime": "",
+        "games": [],
+        "otherAccounts": [],
+        "openToInvite": true,
+        "messagesOpen": true,
+        "admin": true
             "Discord": "pixelstudio"
         },
         "openToInvite": false,

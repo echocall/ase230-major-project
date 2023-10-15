@@ -1,0 +1,78 @@
+:root {
+    --dark: #010102;
+    --light: #050505;
+}
+
+body {
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    color: white;
+    background-color: var(--dark);
+}
+
+.form {
+    background-color: var(--light);
+    padding: 32px 160px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    background-color: var(--dark);
+    border-color: white;
+    color: white;
+    width: 100%;
+    padding: 4px 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.fileInput {
+    background-color: var(--dark);
+    border: none;
+    color: white;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.fileInput:hover {
+    background-color: var(--dark);
+    border: 2px solid white;
+    color: white;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+button[type=submit] {
+    background-color: var(--light);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+button[type=submit]:hover {
+    background-color: var(--light);
+    border: 2px solid white;
+    color: white;
+    padding: 8px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
