@@ -90,7 +90,6 @@
     scroll-behavior: smooth;
   }
 }
-
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -10823,4 +10822,14 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1;
 }

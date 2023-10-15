@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    require_once('../settings.php');
+    require('navbar.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Bare - Start Bootstrap Template</title>
+    <title>Group Finder</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -43,27 +48,18 @@
         </div>
         <div id="buttons">
             <button class="button-value" onclick="filterProduct('all')">All</button>
-            <button class="button-value" onclick="filterProduct('MMORPG')">
-                MMORPG
-            </button>
-            <button class="button-value" onclick="filterProduct('FPS')">
-                FPS
-            </button>
-            <button class="button-value" onclick="filterProduct('MOBA')">
-                MOBA
-            </button>
+            <button class="button-value" onclick="filterProduct('MMORPG')">MMORPG</button>
+            <button class="button-value" onclick="filterProduct('FPS')">FPS</button>
+            <button class="button-value" onclick="filterProduct('MOBA')">MOBA</button>
+            <button class="button-value" onclick="filterProduct('OTHER')">OTHER</button>
         </div>
         <div id="products"></div>
     </div>
 </div>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="../themes/js/groupFinderJS.js"></script>
-</body>
-</html>
-
-<!-- Script -->
+<!-- Group Finder JS -->
 <script src="../themes/js/groupFinderJS.js"></script>
 </body>
 </html>

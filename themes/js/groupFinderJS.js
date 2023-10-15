@@ -1,42 +1,45 @@
-let groups = {};
+const url = '../data/groups/groups.json';
 
-fetch('apps/groups/getGroups.php')
-    .then(response => response.json())
-    .then(data => {
-        groups = data;
-        // Use the products object as you did before
-        console.log(groups);
+// Fetch the JSON data and display it
+fetch(url)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
     })
-    .catch(error => console.error('Error fetching products:', error));
+    .then(data => {
+        console.log(data);
+        displayGroups(data);
+    })
+    .catch(error => {
+        console.error('There was a problem fetching the JSON data:', error);
+    });
 
-for (let i of groups.data) {
-    //Create Card
-    let card = document.createElement("div");
-    //Card should have category and should stay hidden initially
-    card.classList.add("card", i.category, "hide");
-    //container
-    let container = document.createElement("div");
-    container.classList.add("container");
-    //product name
-    let name = document.createElement("h5");
-    name.classList.add("product-name");
-    name.innerText = i.productName.toUpperCase();
-    container.appendChild(name);
-    //price
-    let price = document.createElement("h6");
-    price.innerText = "$" + i.price;
-    container.appendChild(price);
+function displayGroups(groups, filter = "", genre = "") {
 
-    card.appendChild(container);
-    document.getElementById("products").appendChild(card);
+    let productContainer = document.getElementById("products");
+    productContainer.innerHTML = '';
+
+    for (let i of groups) {
+
+        // Create Card
+        let card = document.createElement("div");
+        card.classList.add("card", i.type);
+        let container = document.createElement("div");
+        container.classList.add("container");
+        let name = document.createElement("h5");
+        name.classList.add("group-name");
+        name.innerText = i.name.toUpperCase();
+        container.appendChild(name);
+        card.appendChild(container);
+        productContainer.appendChild(card);
+    }
 }
 
-//parameter passed from button (Parameter same as category)
 function filterProduct(value) {
-    //Button class code
     let buttons = document.querySelectorAll(".button-value");
     buttons.forEach((button) => {
-        //check if value equals innerText
         if (value.toUpperCase() == button.innerText.toUpperCase()) {
             button.classList.add("active");
         } else {
@@ -44,47 +47,42 @@ function filterProduct(value) {
         }
     });
 
-    //select all cards
-    let elements = document.querySelectorAll(".card");
-    //loop through all cards
-    elements.forEach((element) => {
-        //display all cards on 'all' button click
-        if (value == "all") {
-            element.classList.remove("hide");
-        } else {
-            //Check if element contains category class
-            if (element.classList.contains(value)) {
-                //display element based on category
-                element.classList.remove("hide");
-            } else {
-                //hide other elements
-                element.classList.add("hide");
-            }
-        }
-    });
+    fetch(url)
+        .then(response => response.json())
+        .then(data => displayGroups(data, "", value))
+        .catch(error => console.error('Error during genre filtering:', error));
 }
 
-//Search button click
-document.getElementById("search").addEventListener("click", () => {
-    //initializations
-    let searchInput = document.getElementById("search-input").value;
-    let elements = document.querySelectorAll(".product-name");
-    let cards = document.querySelectorAll(".card");
-
-    //loop through all elements
-    elements.forEach((element, index) => {
-        //check if text includes the search value
-        if (element.innerText.includes(searchInput.toUpperCase())) {
-            //display matching card
-            cards[index].classList.remove("hide");
-        } else {
-            //hide others
-            cards[index].classList.add("hide");
+function fuzzySearch(groupName, query) {
+    let queryIndex = 0;
+    for (let char of groupName) {
+        if (char.toLowerCase() === query[queryIndex].toLowerCase()) {
+            queryIndex++;
         }
+        if (queryIndex === query.length) {
+            return true;
+        }
+    }
+    return false;
+}
+
+document.getElementById("search").addEventListener("click", () => {
+    let searchInput = document.getElementById("search-input").value;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => displayGroups(data, searchInput))
+        .catch(error => console.error('Error during search:', error));
+});
+
+document.querySelectorAll(".button-value").forEach(button => {
+    button.addEventListener("click", () => {
+        filterProduct(button.innerText);
     });
 });
 
-//Initially display all products
 window.onload = () => {
-    filterProduct("all");
+    fetch(url)
+        .then(response => response.json())
+        .then(data => displayGroups(data))
+        .catch(error => console.error('Error during initial display:', error));
 };

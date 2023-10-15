@@ -1,4 +1,5 @@
 <?php
+            session_start();
             require_once('../settings.php');
             require('navbar.php');
         ?>
@@ -19,7 +20,7 @@
         <!-- Header-->
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
-                <h1 class="fw-bolder">Welcome to Squad Up</h1>
+                <h1 class="fw-bolder">Welcome to Squad Up <?php if (isset($_SESSION['username'])) echo $_SESSION["username"]?></h1>
                 <p class="lead">A website to find other like minded individuals</p>
                 <a class="btn btn-lg btn-light" href="#about">Start Finding!</a>
             </div>
