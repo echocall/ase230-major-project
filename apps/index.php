@@ -9,6 +9,10 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="themes/css/styles.css" rel="stylesheet" />
+        <? php
+            require_once('settings.php');
+            require('navbar.php');
+        ?>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -20,7 +24,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="groupFinder.html">Group Finder</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Your Groups</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                     </ul>
                 </div>
             </div>
