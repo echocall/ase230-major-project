@@ -17,25 +17,60 @@ fetch(url)
     });
 
 function displayGroups(groups, filter = "", genre = "") {
+    console.log("Displaying groups with filter:", filter, "and genre:", genre);
 
     let productContainer = document.getElementById("products");
     productContainer.innerHTML = '';
 
     for (let i of groups) {
+        if (filter && !fuzzySearch(i.name, filter)) {
+            console.log("Skipping group due to filter:", i.name);
+            continue;
+        }
+        if (genre && i.genre !== genre) {
+            console.log("Skipping group due to genre mismatch:", i.name);
+            continue;
+        }
 
         // Create Card
         let card = document.createElement("div");
         card.classList.add("card", i.type);
+
+        // Create container for card content
         let container = document.createElement("div");
         container.classList.add("container");
+
+        // Group name
         let name = document.createElement("h5");
         name.classList.add("group-name");
         name.innerText = i.name.toUpperCase();
         container.appendChild(name);
+
+        // Group games
+        let games = document.createElement("p");
+        games.classList.add("group-games");
+        games.innerText = "Games: " + i.games.join(", "); // Assuming games is an array
+        container.appendChild(games);
+
+        // Group website
+        let website = document.createElement("a");
+        website.classList.add("group-website");
+        website.href = i.website;
+        website.innerText = "Visit website";
+        website.target = "_blank"; // open in new tab
+        container.appendChild(website);
+
+        // Group bio
+        let bio = document.createElement("p");
+        bio.classList.add("group-bio");
+        bio.innerText = i.bio;
+        container.appendChild(bio);
+
         card.appendChild(container);
         productContainer.appendChild(card);
     }
 }
+
 
 function filterProduct(value) {
     let buttons = document.querySelectorAll(".button-value");
