@@ -12,7 +12,9 @@ echo '<!-- Responsive navbar-->
 
 if (!isset($_SESSION['username'])) { // User is not logged in
     echo '  <li class="nav-item"><a class="nav-link" href="../apps/auth/signup.php">Sign up</a></li>
-            <li class="nav-item"><a class="nav-link" href="../apps/auth/login.php">login</a></li>';
+            <li class="nav-item"><a class="nav-link" href="../apps/auth/login.php">Login</a></li>';
+}else{
+    echo '<li class="nav-item"><a class="nav-link" href="../apps/auth/signout.php">Sign out</a></li>';
 }
 
 echo '      </ul>
