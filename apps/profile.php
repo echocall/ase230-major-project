@@ -18,6 +18,7 @@ foreach ($data as $user) {
         break;
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +38,10 @@ foreach ($data as $user) {
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <div class="col-lg-7">
+                    <?php
+                    if($currentUser['profilePicture']!=''){
+
+                    }
                     <img class="img-fluid rounded mb-4 mb-lg-0" src="<?php echo htmlspecialchars($currentUser['profilePicture']); ?>" alt="Profile Picture" />
                 </div>
                 <div class="d-flex col-lg-5 align-items-center justify-content-center" style="margin-top: 5%;">
@@ -57,6 +62,7 @@ foreach ($data as $user) {
                             <div class="card-body">
                                 <h2 class="card-title"><?php echo htmlspecialchars($gameName); ?></h2>
                                 <p class="card-text"><?php echo htmlspecialchars($gameDescription); ?></p>
+                                <a href="edit.php?index=<?= $currentUser ?>">Edit Profile</a> 
                             </div>
                             <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                         </div>

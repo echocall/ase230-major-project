@@ -8,7 +8,7 @@
         "profilePicture": "filenamehere.jpg",
         "timeZone": "Eastern",
         "playTime": "8pm-11pm",
-        "description":  "Casual gamer dad in his 40s",
+        "description": "Casual gamer dad in his 40s",
         "games": {
             "World of Warcraft": "LFG for raids, Tank Main",
             "ARK:Survival Evolved": "US-East PVP server",
@@ -34,7 +34,7 @@
         "profilePicture": "filenamehere.jpg",
         "timeZone": "Central",
         "playTime": "8pm-11pm",
-        "description":  "College student playing games",
+        "description": "College student playing games",
         "games": {
             "Starship Troopers": "LFG Veteran Horde Mode. Lets shoot bugs!"
         },
@@ -58,7 +58,7 @@
         "profilePicture": "filenamehere.jpg",
         "timeZone": "Eastern",
         "playTime": "4pm-7pm",
-        "description":  "College student playing games",
+        "description": "College student playing games",
         "games": {
             "Rocket League": "LFG semi-competitive",
             "Minecraft": "Creative Builder looking for team."
@@ -83,7 +83,7 @@
         "profilePicture": "filenamehere.jpg",
         "timeZone": "Eastern",
         "playTime": "8pm-11pm",
-        "description":  "College student playing games",
+        "description": "College student playing games",
         "games": {
             "World of Warcraft": "LFG for raids, Tank Main",
             "ARK:Survival Evolved": "US-East PVP server",
@@ -109,7 +109,7 @@
         "profilePicture": "filenamehere.jpg",
         "timeZone": "chestnut",
         "playTime": "4pm-7pm",
-        "description":  "College student playing games",
+        "description": "College student playing games",
         "games": {
             "Rocket League": "pistachio",
             "Minecraft": "macademia"
@@ -123,6 +123,21 @@
         },
         "openToInvite": false,
         "messagesOpen": false,
+        "admin": true
+    },
+    {
+        "username": "phoenixashes",
+        "name": "",
+        "email": "stripedmango@hotmail.com",
+        "password": "$2y$10$uZWvvBIfBVULqaB.x8JwouLZoIQ.T7ruPz4Y57YiVhIt2SGvOXxKW",
+        "ageRange": "",
+        "timeZone": "",
+        "playTime": "",
+        "description": "",
+        "games": [],
+        "otherAccounts": [],
+        "openToInvite": true,
+        "messagesOpen": true,
         "admin": true
     }
 ]
