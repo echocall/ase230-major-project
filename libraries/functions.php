@@ -49,6 +49,9 @@ function groupJoinStatus($int){
         case 3:
             $statusAsText = 'Closed';
             break;
+        default:
+            $statusAsText = 'Error';
+            break;
     }
 
     return $statusAsText;

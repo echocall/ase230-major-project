@@ -23,7 +23,7 @@ $i=0;
     <a href="index.php">Guild Index</a> | <a href="edit.php?index=<?= $index ?>">Edit This Group</a> | <a href="delete.php?index=<?= $index ?>">Delete This Group </a>
     <h2><?= $guild['name'] ?></h2>
     <p>Group Type: <?= $guild['type'] ?> | Open to Join: <?= $status ?> </p><br />
-    <p>Website: <a href="#"><?= $guild['website'] ?></a> <?= $guild['webText'] ?> </p><br />
+    <p>Website: <a href="<?= $guild['website'] ?>"><?= $guild['webText'] ?></a> </p><br />
     <p><?= $guild['bio'] ?></p>
     <h3>Members</h3>
     <?php 

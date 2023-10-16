@@ -8,8 +8,7 @@
             "Sun Haven",
             "Stardew Valley"
         ],
-        "genre" : "OTHER",
-        "website": "None",
+        "website": "www.example.com",
         "webText": "",
         "bio": "Absolute Alteration.",
         "members": {
@@ -18,7 +17,7 @@
             "uerName3": "Newbie",
             "uerName4": "Newbie"
         },
-        "freeToJoin": "1"
+        "freeToJoin": 1
     },
     {
         "name": "Fantasy Dynasty",
@@ -29,7 +28,7 @@
         "games": [
             "Minecraft"
         ],
-        "genre" : "OTHER",
+        "genre": "OTHER",
         "website": "www.fantasydynasty.qte",
         "webText": "View our gallery",
         "bio": "A group of Minecraft builders with experience turning your daydreams into reality. You can see our gallery at the link. For business inquires contact us at: exampleemail@freemail.com",
@@ -50,7 +49,7 @@
         "games": [
             "All"
         ],
-        "genre" : "MMORPG",
+        "genre": "MMORPG",
         "website": "",
         "webText": "",
         "bio": "test group please ignore.",
@@ -66,7 +65,7 @@
         "games": [
             "Variety"
         ],
-        "genre" : "MOBA",
+        "genre": "MOBA",
         "website": "www.haha.no",
         "webText": "",
         "bio": "Filler text filler text\r\nSphinx of black quartz judge my vow!\r\n\r\nThe quick brown fox jumps over the lazy dog.",

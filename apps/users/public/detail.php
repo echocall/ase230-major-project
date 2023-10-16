@@ -8,7 +8,7 @@ $usersKey = array_keys($users);
 
 $index=$_GET['index'];
 
-$user=getGroup($users,$index);
+$user=getItem($users,$index);
 
 
 $games=$user['games'];

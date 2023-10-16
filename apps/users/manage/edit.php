@@ -11,7 +11,14 @@ require_once APP_PATH.'/libraries/functions.php';
 $users=readJSONFile(APP_PATH.'/data/users/users.JSON');
 $usersKey = array_keys($users);
 
-$index=$_GET['index'];
+$userName=$_GET['index'];
+
+foreach ($users as $user) {
+    if ($user['username'] === $_SESSION['username']) {
+        $currentUser = $user;
+        break;
+    }
+}
 
 $user=getItem($users,$index);
 

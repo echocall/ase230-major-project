@@ -17,7 +17,7 @@ echo '<!-- About section-->
                 <a href="create.php?">Create A Group</a>';
                 foreach($groups as $guild){
                     $members=$guild['members'];
-                    $status=guildJoinStatus($guild['freeToJoin']);
+                    $status=groupJoinStatus($guild['freeToJoin']);
                 ?>
                     <div>
                         <h3><?= $guild['name'] ?></h3>
