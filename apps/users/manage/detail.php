@@ -20,9 +20,7 @@ $platformName=array_keys($accounts);
 
 $i=0;
 $int=0;
-if($user['bio']==""{
-    header(header('location: edit.php?index='.$index);)
-}else{
+
 ?>
     <div>
         <a href="index.php">Return to Users List</a>
@@ -50,4 +48,3 @@ if($user['bio']==""{
         <a href="edit.php?index=<?= $index ?>">Edit Profile</a> 
     </div>
 <?php 
-}

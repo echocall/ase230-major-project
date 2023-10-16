@@ -171,5 +171,37 @@
         "openToInvite": true,
         "messagesOpen": true,
         "admin": true
+    },
+    {
+        "username": "TestAccount08",
+        "name": "",
+        "email": "pamela.lynn.pepper@gmail.com",
+        "password": "$2y$10$bsJ9Zd09hk8uxr36gXO\/lO4bZy8xVLzk7Wc4ErQte5ArVcxlglXb6",
+        "description": "",
+        "ageRange": "",
+        "profilePicture": "",
+        "timeZone": "",
+        "playTime": "",
+        "games": [],
+        "otherAccounts": [],
+        "openToInvite": true,
+        "messagesOpen": true,
+        "admin": true
+    },
+    {
+        "username": "TesterAccount07",
+        "name": "",
+        "email": "pamela.lynn.pepper@gmail.com",
+        "password": "$2y$10$LMeDQMEY5ZRcR4D82MKL4OJ1fjSfuiw4LiGEyLsh\/QJmVDUXR\/VKi",
+        "description": "",
+        "ageRange": "",
+        "profilePicture": "",
+        "timeZone": "",
+        "playTime": "",
+        "games": [],
+        "otherAccounts": [],
+        "openToInvite": true,
+        "messagesOpen": true,
+        "admin": true
     }
 ]

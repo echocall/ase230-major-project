@@ -218,22 +218,16 @@ function deleteFromJSON($file,$index){
     // convert string into a PHP array
     $originalFile=json_decode($originalFile,true);
 
-    print_r($originalFile);
-    echo '<br><br>';
-
    // remove the element
    unset($originalFile[$index]);
    
    // restores array as index array.
    $updatedList=array_values($originalFile);
 
-   print_r($updatedList);
-   echo '<br><br>';
-
    // Encode the array into a JSON string
    $updatedList=json_encode($updatedList,JSON_PRETTY_PRINT);
    // Save the file
-   // file_put_contents($file,$updatedList);
+   file_put_contents($file,$updatedList);
 
     return true;
 }

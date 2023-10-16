@@ -5,7 +5,7 @@ require_once APP_PATH.'/libraries/functions.php';
 
 $groups=readJSONFile(APP_PATH.'/data/groups/groups.JSON');
 $index=$_GET['index'];
-$guild=getGroup($groups,$index);
+$guild=getItem($groups,$index);
 
 // seperate members into their own array.
 $members = $guild['members'];
@@ -26,7 +26,7 @@ if(count($_POST)>0){
     $result=deleteFromJSON(APP_PATH.'/data/groups/groups.JSON',$index);
 
     if($result==true){
-        // header('location: index.php');
+       header('location: index.php');
     }
 }else{
 ?>

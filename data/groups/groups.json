@@ -2,7 +2,7 @@
     {
         "name": "ZapCo",
         "id": "1",
-        "type": "Casual",
+        "type": "Professional",
         "games": [
             "Animal Crossing",
             "Sun Haven",
@@ -10,14 +10,14 @@
         ],
         "website": "www.example.com",
         "webText": "",
-        "bio": "Absolute Alteration.",
+        "bio": "Absolute Alteration Association.",
         "members": {
             "userName": "Owner",
             "userName2": "Officer",
             "uerName3": "Newbie",
             "uerName4": "Newbie"
         },
-        "freeToJoin": 1
+        "freeToJoin": "2"
     },
     {
         "name": "Fantasy Dynasty",
@@ -49,28 +49,11 @@
         "games": [
             "All"
         ],
-        "genre": "MMORPG",
-        "website": "",
+        "website": "www.example.com",
         "webText": "",
-        "bio": "test group please ignore.",
+        "bio": "Best Group",
         "members": {
             "sassafrass": "Owner"
-        },
-        "freeToJoin": "3"
-    },
-    {
-        "name": "For Deletion",
-        "id": "6",
-        "type": "Casual",
-        "games": [
-            "Variety"
-        ],
-        "genre": "MOBA",
-        "website": "www.haha.no",
-        "webText": "",
-        "bio": "Filler text filler text\r\nSphinx of black quartz judge my vow!\r\n\r\nThe quick brown fox jumps over the lazy dog.",
-        "members": {
-            "Omega": "Owner"
         },
         "freeToJoin": "2"
     }
