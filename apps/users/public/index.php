@@ -1,13 +1,11 @@
 <?php 
 // INDEX.php : Main browsing page for all users
 require_once '../../../settings.php';
+require_once APP_PATH.'/libraries/pdo.php';
 require_once APP_PATH.'/libraries/functions.php';
 
-$users=readJSONFile(APP_PATH.'/data/users/users.JSON');
-$usersKey = array_keys($users);
+$result=$pdo->query('SELECT * FROM users');
 
-$index=0;
-$i=0;
 
 echo '<!-- About section-->
 <section id="about">
@@ -15,31 +13,20 @@ echo '<!-- About section-->
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
                 <h2>Users</h2>';
-                foreach($users as $user){
+                /* foreach($users as $user){
                     $games=$user['games'];
                     $gameName=array_keys($games);
                     $messageStatus = userMessageStatus($user['messagesOpen']);
                     $inviteStatus = userInviteStatus($user['openToInvite']);
+                */
                     
-                ?>
-                    <div>
-                        <h3><?= $user['name'] ?></h3>
-                        <p>Username: <?= $user['username'] ?> | Time Zone: <?= $user['timeZone'] ?> | Open To Invite: <?= $inviteStatus ?> </p>
-                        <?php
-                            while($i < count($games)){
-                                echo '<p><b>'.$gameName[$i].'</b>: '.$games[$gameName[$i]].'</p>';
-                                $i++;
-                            }
-                            // reset game array index.
-                            $i=0;
-                        ?>
-                        <a href="#">Message this User</a> | Messages: <?= $messageStatus ?>
-                        <a href="detail.php?index=<?= $index ?>">View Details</a> 
+                while($user=$result->fetch()){
+                    echo '<div><h3>'.$user['username'].'</h3>';
+                    echo '<p>Email: '.$user['email'].' | Time Zone: '.$user['timeZone'].' | Open to Invite: '.$user['openToInvite'].'</p>';
+                    echo '<a href="detail.php?id='.$user['userID'].'">Go to page</a>
                     </div>
-                    <hr />
-                <?php
-                $index++;
-                };
+                    <hr />';
+                }
             
             echo '</div>
         </div>

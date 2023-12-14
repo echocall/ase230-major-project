@@ -21,7 +21,7 @@
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Welcome to Squad Up <?php if (isset($_SESSION['username'])) echo $_SESSION["username"]?></h1>
-                <p class="lead">A website to find other like minded individuals</p>
+                <p class="lead">A website to find other like minded individuals for playing games!</p>
                 <a class="btn btn-lg btn-light" href="#about">Start Finding!</a>
             </div>
         </header>
