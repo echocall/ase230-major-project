@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once '../../../settings.php';
-require_once APP_PATH.'/libraries/pdo.php';
+require_once '../../settings.php';
+require_once '../../libraries/pdo.php';
 
 $username_error = $password_error = "";
 $username = $password = "";

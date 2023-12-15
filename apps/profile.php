@@ -4,6 +4,16 @@ require('navbar.php');
 if (!isset($_SESSION['username'])) {
     die("Username not set in the session.");
 }
+
+if (count($_POST>0){
+	// if there is something to be posted, get the pdo
+	require_once('pdo.php');
+	// the query! Use place holders (the ? for values) and write in what gets $_POSTed for each ($_POST['lastname']). format: $_POST('fieldname')
+	query($pdo,'SELECT FROM users (first_name,last_name,profile_picture,bio) VALUES ?,?,?,?',[$_POST['firstname'],$_POST['lastname'],$_POST['profile_picture'],$_POST['bio']]);
+	
+}
+
+// this gets replaced
 $jsonData = file_get_contents('../data/users/users.json');
 $data = json_decode($jsonData, true);
 
