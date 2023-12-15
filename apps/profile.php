@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('navbar.php');
+require_once('../settings.php');
+require_once('navbar.php');
 if (!isset($_SESSION['username'])) {
     die("Username not set in the session.");
 }
