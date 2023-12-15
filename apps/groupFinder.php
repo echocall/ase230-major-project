@@ -2,6 +2,7 @@
     session_start();
     require_once('../settings.php');
     require('navbar.php');
+    require('../libraries/pdo.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

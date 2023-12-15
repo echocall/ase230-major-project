@@ -1,16 +1,19 @@
 <?php
 session_start();
+
+require_once '../../settings.php';
+
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
 
-function save_user($user){
-    $json_user_data = file_get_contents(__DIR__ . '/../../data/users/users.json');
-    $user_data = json_decode($json_user_data, true);
-    $user_data[] = $user;
-    $json_user_data = json_encode($user_data, JSON_PRETTY_PRINT);
-    $fp=fopen(__DIR__ . '/../../data/users/users.json','w');
-    fputs($fp,$json_user_data);
-    fclose($fp);
+function save_user(){
+	if(count($_POST)>0){
+        // if a new user isn't created we don't need this file.
+        require_once APP_PATH.'/libraries/pdo.php';
+
+        // write user's information to database.
+		query($pdo,'INSERT INTO users (username,email,password,name,description,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$_POST['password'],$_POST['name'],$_POST['timeZone'],$_POST['playTime'],$_POST['siteAdmin'],$_POST['opentToInvite'],$_POST['messagesOpen'],$_POST['profilePicture']]);
+	}
 }
 
 function check_confirm_password($password, $password_conf){
@@ -53,16 +56,11 @@ if(count($_POST)>0){
             "playTime" => "",
             "games" => array(),
             "otherAccounts" => array(),
-            "openToInvite" => true,
-            "messagesOpen" => true,
+            "openToInvite" => false,
+            "messagesOpen" => false,
             "admin" => true
         );
-        save_user($user);
-        if($_FILES['pfp']['size'] != 0){
-            $path_parts = pathinfo($_FILES["pfp"]["name"]);
-            $extension = $path_parts['extension'];
-            move_uploaded_file($_FILES['pfp']['tmp_name'], __DIR__ . '/../../data/users/images/' . $_POST['username'] . '_pfp.' . $extension);
-        }
+        save_user();
         $_SESSION['username']=$_POST['username'];
         header('Location: ../index.php');
         die();
@@ -78,7 +76,7 @@ if(count($_POST)>0){
 <body>
     <div class="container"><h1>Create your account</h1></div>
     <div class="container">
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+        <form method="POST" action="pdo.php" enctype="multipart/form-data">
             <div class="form">
                 Username<br />
                 <div>

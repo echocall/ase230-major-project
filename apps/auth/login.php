@@ -1,8 +1,25 @@
 <?php
 session_start();
+
+require_once '../../settings.php';
+require_once '../../libraries/pdo.php';
+
 $username_error = $password_error = "";
 $username = $password = "";
 
+function verify_user($username){
+    // getting the data from database
+    $result=$pdo->query('SELECT * FROM users');
+    // checking that the username/email exists
+    while($row=$result->fetch()){
+        if($row['username'] == $username || $row['email'] == $username){
+            return true;
+        }
+    }
+    return false;
+}
+
+/* Defunct verify user
 function verify_user($username){
     $json_user_data = file_get_contents(__DIR__ . '/../../data/users/users.json');
     $user_data = json_decode($json_user_data, true);
@@ -13,7 +30,21 @@ function verify_user($username){
     }
     return false;
 }
+*/
 
+function verify_password($username, $password){
+    // get username & password
+    $result=$pdo->query('SELECT * FROM users');
+    // check if username || email match $username, && password verifies.
+    while($row=$result->fetch()){
+        if(($row['username'] == $username || $row['email'] == $username) && password_verify($password, $row['password'])){
+            return true;
+        }
+    }
+    return false;
+}
+
+/* Defunct verify_password
 function verify_password($username, $password){
     $json_user_data = file_get_contents(__DIR__ . '/../../data/users/users.json');
     $user_data = json_decode($json_user_data, true);
@@ -24,6 +55,7 @@ function verify_password($username, $password){
     }
     return false;
 }
+*/
 
 if(count($_POST)>0){
     # Set input values so that fields don't clear on submit

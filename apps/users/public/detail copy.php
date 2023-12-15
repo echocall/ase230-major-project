@@ -1,35 +1,45 @@
 <?php
-session_start();
-
-require_once '../settings.php';
+// DETAIL.php : Specific user browsing page for non-logged in, or non-admin users.
+require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/pdo.php';
 require_once APP_PATH.'/libraries/functions.php';
 
-require('navbar.php');
-if (!isset($_SESSION['username'])) {
-    die("Username not set in the session.");
-}
+/*
+$users=readJSONFile(APP_PATH.'/data/users/users.JSON');
+$usersKey = array_keys($users);
 
-$currentUser = null;
+$index=$_GET['index'];
 
-// pull the user info from database and into object
-$result=$pdo->query('SELECT * FROM users');
-while($user=$result->fetch()){
-    if($_SESSION['username'] == $user['username']){
-        // set user pulled from array as current user.
-        $currentUser = $user;
-        break;
-    }
-}
+$user=getGroup($users,$index);
 
-// get the user's listings.
-$userListings=$pdo->query('SELECT * FROM listings WHERE userID ='.$currentUser['userID']);
+$games=$user['games'];
+$gameName=array_keys($games);
+$messageStatus = userMessageStatus($user['messagesOpen']);
+$inviteStatus = userInviteStatus($user['openToInvite']);
+*/
+
+$user=$pdo->query('SELECT * FROM users WHERE userID='.$_GET['id']);
+
+$userListings=$pdo->query('SELECT * FROM listings WHERE userID ='.$_GET['id']);
 
 
-if (!isset($_SESSION['username'])) {
-    die("Username not set in the session.");
-}
 
+   /* echo '<div>
+        <a href="index.php">Return to Users List</a>
+        <h3>'. $user['username'] .'</h3>
+        <p><b>Name:</b> '. $user['name'] .' | Time Zone: '. $user['timeZone'] .' | Open To Invite: '. $inviteStatus .' </p>
+        <?php
+            while($listing=$result2->fetch()){
+                echo '<p><b>'.$result2['title'].'</b><br />
+                <p>'.$result2['description'].'</p>';
+            }
+        // reset game array index.
+        $i=0;
+        ?>
+        <a href="#">Message this User</a> | Messages: <?= $messageStatus ?>
+        <a href="detail.php?index=<?= $index ?>">View Details</a> 
+    </div>';
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,37 +60,37 @@ if (!isset($_SESSION['username'])) {
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <div class="col-lg-7">
                     <?php
-                    if($currentUser['profilePicture']!=''){
-                        // TODO: display
-                    }
+                        /* if($user['profilePicture']!=''){
+                            
+                        }*/
                     ?>
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="<?php echo htmlspecialchars($currentUser['profilePicture']); ?>" alt="Profile Picture" />
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="<?php echo htmlspecialchars($user['profilePicture']); ?>" alt="Profile Picture" />
                 </div>
                 <div class="d-flex col-lg-5 align-items-center justify-content-center" style="margin-top: 5%;">
-                    <h1 class="font-weight-light"><?php echo htmlspecialchars($currentUser['username']); ?></h1>
+                    <h1 class="font-weight-light"><?php echo htmlspecialchars($user['username']); ?></h1>
                 </div>
             </div>
 
             <div class="card text-white bg-secondary my-5 py-4 text-center">
                 <div class="card-body">
-                    <p class="text-white m-0"><?php echo htmlspecialchars($currentUser['description']); ?></p>
+                    <p class="text-white m-0"><?php echo htmlspecialchars($user['description']); ?></p>
                 </div>
             </div>
 
             <div class="row gx-4 gx-lg-5">
-            <?php  while($listing=$userListings->fetch()){ 
+                <?php  while($listing=$userListings->fetch()){ 
                     echo '<div class="col-md-4 mb-5">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h2 class="card-title">'. htmlspecialchars($listing['title']).'</h2>
                                 <p class="card-text">'. htmlspecialchars($listing['description']) .'</p>
-                                <a href="edit.php?index='. $user['userID'] .'">Edit Profile</a> 
+                                <a href="edit.php?index='. $currentUser['userID'] .'">Edit Profile</a> 
                             </div>';
                     }
-                     echo      '<div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>';
                 ?>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                        </div>
+                    </div>
             </div>
         </div>
 
