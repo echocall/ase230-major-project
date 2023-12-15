@@ -1,37 +1,39 @@
 <?php
-// DETAIL.php : Specific  guild browsing page for non-logged in, or non-admin users.
 require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 
-$groups=readJSONFile(APP_PATH.'/data/groups/groups.JSON');
+$conn = new mysqli("localhost", "username", "password", "groupfinder");
 
-$index=$_GET['index'];
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-$guild=getGroup($groups,$index);
+$group_id = isset($_GET['group_id']) ? intval($_GET['group_id']) : 0;
 
-// seperate members into their own array.
-$members = $guild['members'];
-// get the keys
-$membersKey = array_keys($members);
+$sql = "SELECT * FROM Groups WHERE GroupID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $group_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
-// get join status
-$status=groupJoinStatus($guild['freeToJoin']);
-
-$i=0;
-?>
-<div>
-    <a href="index.php">Guild Index</a> | <a href="edit.php?index=<?= $index ?>">Edit This Group</a> | <a href="delete.php?index=<?= $index ?>">Delete This Group </a>
-    <h2><?= $guild['name'] ?></h2>
-    <p>Group Type: <?= $guild['type'] ?> | Open to Join: <?= $status ?> </p><br />
-    <p>Website: <a href="#"><?= $guild['website'] ?></a> <?= $guild['webText'] ?> </p><br />
-    <p><?= $guild['bio'] ?></p>
-    <h3>Members</h3>
-    <?php 
-        while($i < count($members)){
-            echo '<p>'.$members[$membersKey[$i]].': '.$membersKey[$i].'</p>';
-            $i++;
-        }
+if ($result && $result->num_rows > 0) {
+    $guild = $result->fetch_assoc();
+    $status = guildJoinStatus($guild['freeToJoin']);
     ?>
-           
-</div>
-<?php 
+    <div>
+        <a href="index.php">Guild Index</a> | <a href="edit.php?group_id=<?= $group_id ?>">Edit This Group</a> | <a href="delete.php?group_id=<?= $group_id ?>">Delete This Group </a>
+        <h2><?= htmlspecialchars($guild['name']) ?></h2>
+        <p>Group Type: <?= htmlspecialchars($guild['type']) ?> | Open to Join: <?= htmlspecialchars($status) ?> </p><br />
+        <p>Website: <a href="<?= htmlspecialchars($guild['website']) ?>"><?= htmlspecialchars($guild['website']) ?></a> <?= htmlspecialchars($guild['webText']) ?> </p><br />
+        <p><?= htmlspecialchars($guild['bio']) ?></p>
+        <h3>Members</h3>
+        <?php
+        ?>
+    </div>
+    <?php
+} else {
+    echo "Group not found.";
+}
+
+$conn->close();
+?>

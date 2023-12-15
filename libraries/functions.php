@@ -15,6 +15,10 @@ function userMessageStatus($boolean){
 
     return $statusAsText;
 }
+function guildJoinStatus($freeToJoin): string
+{
+    return $freeToJoin ? 'Yes' : 'No';
+}
 // Translates a users's message status from a number to a string.
 function userInviteStatus($boolean){
     switch($boolean){

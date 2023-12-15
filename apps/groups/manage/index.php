@@ -1,11 +1,17 @@
-<?php 
+<?php
 // INDEX.php : Main browsing page for non-logged in or non-admin users.
 require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 
-$groups=readJSONFile(APP_PATH.'/data/groups/groups.JSON');
+// Database connection
+$conn = new mysqli("localhost", "username", "password", "groupfinder");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-$index=0;
+// Query to select all groups
+$sql = "SELECT * FROM Groups";
+$result = $conn->query($sql);
 
 echo '<!-- About section-->
 <section id="about">
@@ -15,22 +21,28 @@ echo '<!-- About section-->
                 <h2>Groups</h2>
                 <p class="lead">Browse the guilds open to the public to find your perfect match or create your own:</p>  
                 <a href="create.php?">Create A Group</a>';
-                foreach($groups as $guild){
-                    $members=$guild['members'];
-                    $status=groupJoinStatus($guild['freeToJoin']);
-                ?>
-                    <div>
-                        <h3><?= $guild['name'] ?></h3>
-                        <p>Owner: <?= array_key_first($members); ?> | Group Type: <?= $guild['type'] ?> | Open to Join: <?= $status ?> </p>
-                        <p><?= $guild['bio'] ?> </p><br />
-                        <a href="detail.php?index=<?= $index ?>">View Details</a>
-                    </div>
-                    <hr />
-                <?php
-                $index++;
-                };
-            
-            echo '</div>
+
+if ($result && $result->num_rows > 0) {
+    while($guild = $result->fetch_assoc()) {
+        $status = guildJoinStatus($guild['freeToJoin']); // Ensure this function is defined or replace with appropriate logic
+        ?>
+        <div>
+            <h3><?= htmlspecialchars($guild['name']) ?></h3>
+            <p>Owner: <?= htmlspecialchars($guild['OwnerID']); ?> | Group Type: <?= htmlspecialchars($guild['type']) ?> | Open to Join: <?= htmlspecialchars($status) ?> </p>
+            <p><?= htmlspecialchars($guild['bio']) ?> </p><br />
+            <a href="detail.php?group_id=<?= htmlspecialchars($guild['GroupID']) ?>">View Details</a>
         </div>
+        <hr />
+        <?php
+    }
+} else {
+    echo '<p>No groups found.</p>';
+}
+
+$conn->close();
+
+echo '</div>
     </div>
+</div>
 </section>';
+?>
