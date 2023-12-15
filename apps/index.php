@@ -1,7 +1,7 @@
 <?php
             session_start();
             require_once('../settings.php');
-            require('navbar.php');
+            require_once('navbar.php');
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +21,8 @@
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Welcome to Squad Up <?php if (isset($_SESSION['username'])) echo $_SESSION["username"]?></h1>
-                <p class="lead">A website to find other like minded individuals</p>
-                <a class="btn btn-lg btn-light" href="#about">Start Finding!</a>
+                <p class="lead">A platform designed to help you find other like-minded gamers</p>
+                <a class="btn btn-lg btn-light" href="<?php echo BASE_URL ?>groupFinder.php">Get started</a>
             </div>
         </header>
         <!-- About section-->
@@ -30,43 +30,31 @@
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
-                        <h2>About this page</h2>
-                        <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+                        <h2>About Squad Up</h2>
+                        <p class="lead">It is our mission to provide you with the tools you need to connect with gaming companions across the world:</p>
                         <ul>
-                            <li>Clickable nav links that smooth scroll to page sections</li>
-                            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+                            <li>Customizable profiles allow you to express yourself and show what you are looking for</li>
+                            <li>User-created groups allow you to collaborate, hangout, and plan events</li>
+                            <li>Posts, events, messages, and more coming soon!</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Services section-->
-        <section class="bg-light" id="services">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Services we offer</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- Contact section-->
-        <section id="contact">
+        <section class="bg-light" id="contact">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
                         <h2>Contact us</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+                        <p class="lead">support@squadup.com</p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Squad Up 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

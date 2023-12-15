@@ -3,14 +3,10 @@ session_start();
 require_once('../settings.php');
 require_once('navbar.php');
 if (!isset($_SESSION['username'])) {
-    die("Username not set in the session.");
+    header('Location: auth/needtologin.php');
 }
 $jsonData = file_get_contents('../data/users/users.json');
 $data = json_decode($jsonData, true);
-
-if (!isset($_SESSION['username'])) {
-    die("Username not set in the session.");
-}
 
 $currentUser = null;
 foreach ($data as $user) {
