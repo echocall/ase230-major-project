@@ -13,18 +13,6 @@ function save_user(){
 	}
 }
 
-/*
-function save_user($user){
-    $json_user_data = file_get_contents(__DIR__ . '/../../data/users/users.json');
-    $user_data = json_decode($json_user_data, true);
-    $user_data[] = $user;
-    $json_user_data = json_encode($user_data, JSON_PRETTY_PRINT);
-    $fp=fopen(__DIR__ . '/../../data/users/users.json','w');
-    fputs($fp,$json_user_data);
-    fclose($fp);
-}
-*/
-
 function check_confirm_password($password, $password_conf){
     return $password == $password_conf;
 }

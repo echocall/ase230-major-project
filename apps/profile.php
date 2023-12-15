@@ -1,32 +1,33 @@
 <?php
 session_start();
+
+require_once '../settings.php';
+require_once APP_PATH.'/libraries/pdo.php';
+require_once APP_PATH.'/libraries/functions.php';
+
 require('navbar.php');
 if (!isset($_SESSION['username'])) {
     die("Username not set in the session.");
 }
 
-if (count($_POST>0){
-	// if there is something to be posted, get the pdo
-	require_once('pdo.php');
-	// the query! Use place holders (the ? for values) and write in what gets $_POSTed for each ($_POST['lastname']). format: $_POST('fieldname')
-	query($pdo,'SELECT FROM users (first_name,last_name,profile_picture,bio) VALUES ?,?,?,?',[$_POST['firstname'],$_POST['lastname'],$_POST['profile_picture'],$_POST['bio']]);
-	
-}
-
-// this gets replaced
-$jsonData = file_get_contents('../data/users/users.json');
-$data = json_decode($jsonData, true);
-
-if (!isset($_SESSION['username'])) {
-    die("Username not set in the session.");
-}
-
 $currentUser = null;
-foreach ($data as $user) {
-    if ($user['username'] === $_SESSION['username']) {
+
+// pull the user info from database and into object
+$result=$pdo->query('SELECT * FROM users');
+while($user=$result->fetch()){
+    if($_SESSION['username'] == $user['username']){
+        // set user pulled from array as current user.
         $currentUser = $user;
         break;
     }
+}
+
+// get the user's listings.
+$userListings=$pdo->query('SELECT * FROM listings WHERE userID ='.$currentUser['userID']);
+
+
+if (!isset($_SESSION['username'])) {
+    die("Username not set in the session.");
 }
 
 ?>
@@ -50,8 +51,9 @@ foreach ($data as $user) {
                 <div class="col-lg-7">
                     <?php
                     if($currentUser['profilePicture']!=''){
-
+                        // TODO: display
                     }
+                    ?>
                     <img class="img-fluid rounded mb-4 mb-lg-0" src="<?php echo htmlspecialchars($currentUser['profilePicture']); ?>" alt="Profile Picture" />
                 </div>
                 <div class="d-flex col-lg-5 align-items-center justify-content-center" style="margin-top: 5%;">
@@ -66,18 +68,19 @@ foreach ($data as $user) {
             </div>
 
             <div class="row gx-4 gx-lg-5">
-                <?php foreach ($currentUser['games'] as $gameName => $gameDescription): ?>
-                    <div class="col-md-4 mb-5">
+            <?php  while($listing=$userListings->fetch()){ 
+                    echo '<div class="col-md-4 mb-5">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h2 class="card-title"><?php echo htmlspecialchars($gameName); ?></h2>
-                                <p class="card-text"><?php echo htmlspecialchars($gameDescription); ?></p>
-                                <a href="edit.php?index=<?= $currentUser ?>">Edit Profile</a> 
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                                <h2 class="card-title">'. htmlspecialchars($listing['title']).'</h2>
+                                <p class="card-text">'. htmlspecialchars($listing['description']) .'</p>
+                                <a href="edit.php?index='. $user['userID'] .'">Edit Profile</a> 
+                            </div>';
+                    }
+                     echo      '<div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    </div>';
+                ?>
             </div>
         </div>
 
