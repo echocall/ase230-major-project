@@ -10,6 +10,7 @@ fetch(url)
     })
     .then(data => {
         console.log(data);
+        print_r('data');
         displayGroups(data);
     })
     .catch(error => {
