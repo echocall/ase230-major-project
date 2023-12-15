@@ -8,8 +8,11 @@ $username = $email = $password = $password_conf = "";
 
 function save_user(){
 	if(count($_POST)>0){
+        // if a new user isn't created we don't need this file.
         require_once APP_PATH.'/libraries/pdo.php';
-		query($pdo,'INSERT INTO users (username,email,password,name,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$_POST['password'],$_POST['name'],$_POST['timeZone'],$_POST['playTime'],$_POST['siteAdmin'],$_POST['opentToInvite'],$_POST['messagesOpen'],$_POST['profilePicture']]);
+
+        // write user's information to database.
+		query($pdo,'INSERT INTO users (username,email,password,name,description,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$_POST['password'],$_POST['name'],$_POST['timeZone'],$_POST['playTime'],$_POST['siteAdmin'],$_POST['opentToInvite'],$_POST['messagesOpen'],$_POST['profilePicture']]);
 	}
 }
 
@@ -57,12 +60,7 @@ if(count($_POST)>0){
             "messagesOpen" => false,
             "admin" => true
         );
-        save_user($user);
-        /* if($_FILES['pfp']['size'] != 0){
-            $path_parts = pathinfo($_FILES["pfp"]["name"]);
-            $extension = $path_parts['extension'];
-            move_uploaded_file($_FILES['pfp']['tmp_name'], __DIR__ . '/../../data/users/images/' . $_POST['username'] . '_pfp.' . $extension);
-        }*/
+        save_user();
         $_SESSION['username']=$_POST['username'];
         header('Location: ../index.php');
         die();
