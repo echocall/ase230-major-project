@@ -1,7 +1,17 @@
 <?php
 session_start();
+
+require_once '../../../settings.php';
+require_once APP_PATH.'/libraries/pdo.php';
+
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
+
+function save_user(){
+    if(count($_POST)>0){
+        query($pdo,'INSERT INTO users (username,email,password) VALUES(?,?,?)',[$_POST['username'],$_POST['email'],$_POST['password']]);
+    }
+}
 
 function save_user($user){
     $json_user_data = file_get_contents(__DIR__ . '/../../data/users/users.json');
