@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once('../../settings.php');
+require_once('../navbar.php');
 $username_error = $password_error = "";
 $username = $password = "";
 
@@ -7,7 +9,7 @@ function verify_user($username){
     $json_user_data = file_get_contents(__DIR__ . '/../../data/users/users.json');
     $user_data = json_decode($json_user_data, true);
     foreach($user_data as $user){
-        if($user['username'] == $username || $user['email'] == $username){
+        if($user['username'] == $username){
             return true;
         }
     }
@@ -45,19 +47,30 @@ if(count($_POST)>0){
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="../../themes/css/loginAndSignup.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../../themes/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container"><h1>Login</h1></div>
-    <div class="container">
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Login</h1>
+        </div>
+    </header>
+    <div class="container px-4 text-center">
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="form">
-            <div>
-                Username or Email<br />
+            <div><br />
+                Username<br />
                 <input type="text" name="username" value="<?php echo $username; ?>" /><br />
                 <?php
                 if($username_error != ""){
-                    echo '<p style="color: red">'.$username_error.'</p>';
+                    echo '<p style="color: #dc3545">'.$username_error.'</p>';
                 }else echo "<br>"
                 ?>
             </div>
@@ -66,13 +79,13 @@ if(count($_POST)>0){
                 <input type="password" name="password" value="<?php echo $password; ?>" /><br />
                 <?php
                 if($password_error != ""){
-                    echo '<p style="color: red">'.$password_error.'</p>';
+                    echo '<p style="color: #dc3545">'.$password_error.'</p>';
                 }else echo "<br>"
                 ?>
             </div>
         </div><br />
         <div>
-            <button type="submit">Login</button>
+            <button class="btn btn-lg btn-dark" type="submit">Login</button>
         </div>
     </form>
     </div>

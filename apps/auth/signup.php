@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once('../../settings.php');
+require_once('../navbar.php');
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
 
@@ -58,11 +60,11 @@ if(count($_POST)>0){
             "admin" => true
         );
         save_user($user);
-        if($_FILES['pfp']['size'] != 0){
-            $path_parts = pathinfo($_FILES["pfp"]["name"]);
-            $extension = $path_parts['extension'];
-            move_uploaded_file($_FILES['pfp']['tmp_name'], __DIR__ . '/../../data/users/images/' . $_POST['username'] . '_pfp.' . $extension);
-        }
+//        if($_FILES['pfp']['size'] != 0){
+//            $path_parts = pathinfo($_FILES["pfp"]["name"]);
+//            $extension = $path_parts['extension'];
+//            move_uploaded_file($_FILES['pfp']['tmp_name'], __DIR__ . '/../../data/users/images/' . $_POST['username'] . '_pfp.' . $extension);
+//        }
         $_SESSION['username']=$_POST['username'];
         header('Location: ../index.php');
         die();
@@ -73,59 +75,63 @@ if(count($_POST)>0){
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="../../themes/css/loginAndSignup.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../../themes/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container"><h1>Create your account</h1></div>
-    <div class="container">
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Create your account</h1>
+        </div>
+    </header>
+    <div class="container px-4 text-center">
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
-            <div class="form">
-                Username<br />
+            <div><br />
+                <div>Username</div>
                 <div>
                 <input type="text" name="username" value="<?php echo $username; ?>" /><br />
                 <?php
                 if($username_error != ""){
-                    echo '<p style="color: red">'.$username_error.'</p>';
+                    echo '<p style="color: #dc3545">'.$username_error.'</p>';
                 }else echo "<br>"
                 ?>
             </div>
             <div>
-                Email<br />
+                <div>Email</div>
                 <input type="email" name="email" value="<?php echo $email; ?>" /><br />
                 <?php
                 if($email_error != ""){
-                    echo '<p style="color: red">'.$email_error.'</p>';
+                    echo '<p style="color: #dc3545">'.$email_error.'</p>';
                 }else echo "<br>"
                 ?>
             </div>
             <div>
-                Password<br />
+                <div>Password</div>
                 <input type="password" name="password" value="<?php echo $password; ?>" /><br />
                 <?php
                 if($password_error != ""){
-                    echo '<p style="color: red">'.$password_error.'</p>';
+                    echo '<p style="color: #dc3545">'.$password_error.'</p>';
                 }else echo "<br>"
                 ?>
             </div>
             <div>
-                Confirm Password<br />
+                <div>Confirm Password</div>
                 <input type="password" name="password_conf" value="<?php echo $password_conf; ?>" /><br />
                 <?php
                 if($password_conf_error != ""){
-                    echo '<p style="color: red">'.$password_conf_error.'</p>';
+                    echo '<p style="color: #dc3545">'.$password_conf_error.'</p>';
                 }else echo "<br>"
                 ?>
             </div>
-            <div>
-                Profile Picture<br />
-                <label class="fileInput">
-                    Select file
-                <input type="file" name="pfp" />
-                </label><br />
-            </div>
             </div><br />
             <div>
-                <button type="submit">Sign up</button>
+                <button class="btn btn-lg btn-dark" type="submit">Sign up</button>
             </div>
         </form>
     </div>
