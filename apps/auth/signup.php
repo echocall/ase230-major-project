@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once('../../settings.php');
 require_once('../navbar.php');
+require_once('../../settings.php');
+
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
 
