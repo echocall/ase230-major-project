@@ -28,7 +28,5 @@ function select($pdo,$query){
 
 function query($pdo,$query,$data){
 	$query=$pdo->prepare($query);
-	print_r("what went wrong===========");
-	print_r($data);
 	return $query->execute($data);
 }
