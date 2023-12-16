@@ -38,7 +38,7 @@ if (!isset($_SESSION['username'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Small Business - Start Bootstrap Template</title>
+        <title>User Profile</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -65,6 +65,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="card-body">
                     <p class="text-white m-0"><?php echo htmlspecialchars($currentUser['description']); ?></p>
                 </div>
+                    <a href="edit.php?index='. $user['userID'] .'">Edit Profile</a> 
             </div>
 
             <div class="row gx-4 gx-lg-5">
@@ -74,12 +75,11 @@ if (!isset($_SESSION['username'])) {
                             <div class="card-body">
                                 <h2 class="card-title">'. htmlspecialchars($listing['title']).'</h2>
                                 <p class="card-text">'. htmlspecialchars($listing['description']) .'</p>
-                                <a href="edit.php?index='. $user['userID'] .'">Edit Profile</a> 
-                            </div>';
-                    }
-                     echo      '<div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                         </div>
                     </div>';
+            }
                 ?>
             </div>
         </div>
