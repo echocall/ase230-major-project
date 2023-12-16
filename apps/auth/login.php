@@ -3,18 +3,26 @@ session_start();
 
 require_once '../../settings.php';
 require_once '../navbar.php';
-require_once '../../libraries/pdo.php';
+// require_once APP_PATH.'../libraries/pdo.php';
 
 $username_error = $password_error = "";
 $username = $password = "";
 
+function database_PULL(){
+    require_once APP_PATH.'/libraries/pdo.php';
+    $result = select($pdo,'SELECT * FROM users');
+    return $result;
+}
+
 function verify_user($username){
     // getting the data from database
-    $result=$pdo->query('SELECT * FROM users');
-    // checking that the username/email exists
-    while($row=$result->fetch()){
-        if($row['username'] == $username || $row['email'] == $username){
+    $usernameResult = database_PULL();
+    // checking that the username exists
+    foreach($usernameResult as $row)
+    {
+        if($row['username'] == $username){
             return true;
+            break;
         }
     }
     return false;
@@ -34,12 +42,13 @@ function verify_user($username){
 */
 
 function verify_password($username, $password){
-    // get username & password
-    $result=$pdo->query('SELECT * FROM users');
-    // check if username || email match $username, && password verifies.
-    while($row=$result->fetch()){
-        if(($row['username'] == $username || $row['email'] == $username) && password_verify($password, $row['password'])){
+    // get username & password  
+    $passwordResult = database_PULL();
+    // check if username match $username, && password verifies.
+    foreach($passwordResult as $row){
+        if(($row['username'] == $username) && password_verify($password, $row['password'])){
             return true;
+            break;
         }
     }
     return false;
