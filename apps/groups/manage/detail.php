@@ -3,7 +3,7 @@
 require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 
-$conn = new mysqli("localhost", "username", "password", "groupfinder");
+$conn = new mysqli("localhost", "username", "password", "squadup");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

@@ -5,7 +5,7 @@ require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 
 // Connect to the database - adjust with your actual database credentials
-$conn = new mysqli("localhost", "username", "password", "groupfinder");
+$conn = new mysqli("localhost", "username", "password", "squadup");
 
 // Check connection
 if ($conn->connect_error) {
