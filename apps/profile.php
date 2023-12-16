@@ -7,7 +7,7 @@ require_once APP_PATH.'/libraries/functions.php';
 
 require('navbar.php');
 if (!isset($_SESSION['username'])) {
-    die("Username not set in the session.");
+    header('Location: auth/needtologin.php');
 }
 
 $currentUser = null;
