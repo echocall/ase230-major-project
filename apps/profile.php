@@ -11,6 +11,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $currentUser = null;
+$currentGame = null;
 
 // pull the user info from database and into object
 $result=$pdo->query('SELECT * FROM users');
@@ -25,7 +26,6 @@ while($user=$result->fetch()){
 // get the user's listings.
 $userListings=$pdo->query('SELECT * FROM listings WHERE userID ='.$currentUser['userID']);
 
-
 if (!isset($_SESSION['username'])) {
     die("Username not set in the session.");
 }
@@ -38,7 +38,7 @@ if (!isset($_SESSION['username'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Small Business - Start Bootstrap Template</title>
+        <title>User Profile</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -62,9 +62,13 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <div class="card text-white bg-secondary my-5 py-4 text-center">
+                <div class="card-title">
+                <h3 class="font-weight-light"><?php echo htmlspecialchars($currentUser['name']); ?></h3>
+                </div>
                 <div class="card-body">
                     <p class="text-white m-0"><?php echo htmlspecialchars($currentUser['description']); ?></p>
                 </div>
+                    <a href="edit.php?index=#">Edit Profile</a> 
             </div>
 
             <div class="row gx-4 gx-lg-5">
@@ -74,12 +78,11 @@ if (!isset($_SESSION['username'])) {
                             <div class="card-body">
                                 <h2 class="card-title">'. htmlspecialchars($listing['title']).'</h2>
                                 <p class="card-text">'. htmlspecialchars($listing['description']) .'</p>
-                                <a href="edit.php?index='. $user['userID'] .'">Edit Profile</a> 
-                            </div>';
-                    }
-                     echo      '<div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                         </div>
                     </div>';
+            }
                 ?>
             </div>
         </div>

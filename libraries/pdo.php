@@ -19,9 +19,14 @@ $opt = [
 
 $pdo=new PDO($dsn,$user,$pass,$opt);
 
+function select($pdo,$query){
+	$result=$pdo->query($query);
+	$row=$result->fetchAll();
+	// returns as array
+	return $row;
+}
+
 function query($pdo,$query,$data){
 	$query=$pdo->prepare($query);
-	print_r("what went wrong===========");
-	print_r($data);
 	return $query->execute($data);
 }

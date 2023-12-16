@@ -89,7 +89,11 @@ if(count($_POST)>0){
         </div>
     </header>
     <div class="container px-4 text-center">
-        <form method="POST" action="#" enctype="multipart/form-data">
+<<<<<<< Updated upstream
+        <form method="POST" action="../../libraries/pdo.php" enctype="multipart/form-data">
+=======
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+>>>>>>> Stashed changes
             <div class="form">
                 Username<br />
                 <div>

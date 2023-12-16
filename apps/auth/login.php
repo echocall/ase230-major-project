@@ -3,19 +3,53 @@ session_start();
 
 require_once '../../settings.php';
 require_once '../navbar.php';
-require_once '../../libraries/pdo.php';
+// require_once APP_PATH.'/libraries/pdo.php';
+
+//Configure credentials
+$host='localhost';
+$db='squadup';
+$user='root';
+$pass='';
+$charset='utf8';
+
+$dsn="mysql:host=$host;dbname=$db;charset=$charset";
+
+//Specify options
+$opt = [
+	PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+	PDO::ATTR_EMULATE_PREPARES => false
+];
+
+$pdo=new PDO($dsn,$user,$pass,$opt);
+
+function select($pdo,$query){
+    global $pdo;
+	$result=$pdo->query($query);
+	$row=$result->fetchAll();
+	// returns as array
+	return $row;
+}
 
 $username_error = $password_error = "";
 $username = $password = "";
 
+function database_PULL(){
+    global $pdo;
+    $result = select($pdo,'SELECT * FROM users');
+    return $result;
+}
+
 function verify_user($username){
+    global $pdo;
     // getting the data from database
-    $result=$pdo->query('SELECT * FROM users');
-    echo '<h1>'.$result.'</h1>';
-    // checking that the username/email exists
-    while($row=$result->fetch()){
+    $usernameResult = database_PULL();
+    // checking that the username exists
+    foreach($usernameResult as $row)
+    {
         if($row['username'] == $username){
             return true;
+            break;
         }
     }
     return false;
@@ -35,12 +69,14 @@ function verify_user($username){
 */
 
 function verify_password($username, $password){
-    // get username & password
-    $result=$pdo->query('SELECT * FROM users');
-    // check if username || email match $username, && password verifies.
-    while($row=$result->fetch()){
+    global $pdo;
+    // get username & password  
+    $passwordResult = database_PULL();
+    // check if username match $username, && password verifies.
+    foreach($passwordResult as $row){
         if(($row['username'] == $username) && password_verify($password, $row['password'])){
             return true;
+            break;
         }
     }
     return false;
