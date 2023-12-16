@@ -1,17 +1,9 @@
-Eric Jackman
-Pam Pepper
-Jacob Nelson
-
-
-***You made need to change the BASE_URL constant in settings.php if navbar links aren't working properly***
-
-SQL Dump:
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 03:30 AM
+-- Generation Time: Dec 16, 2023 at 05:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -168,7 +160,11 @@ CREATE TABLE `listings` (
 INSERT INTO `listings` (`listingID`, `userID`, `gameID`, `title`, `description`) VALUES
 (1, 503, 1, 'Looking for opponents', 'I am a beginner player looking for others to play with.'),
 (2, 501, 2, 'Looking for 2 more players this evening.', 'Anyone welcome!'),
-(3, 502, 1, 'Looking for coaching', 'Need an advanced player able to help me improve. Willing to compensate.');
+(3, 502, 1, 'Looking for coaching', 'Need an advanced player able to help me improve. Willing to compensate.'),
+(4, 504, 6, 'Looking to Roll The Competetition', 'Competitive player looking for partner(s) for 2v2s or 3v3s! Available EST after 8PM M-Th and F-Sun 6PM.'),
+(5, 505, 4, 'I don\'t want to live forever!', 'Looking for a serious group focused on Veteran and higher ranked gameplay.\r\n\r\nRank: 65.\r\nAll classes 30.\r\nPrimary Hunter.'),
+(6, 505, 6, 'Wheel Spinning', 'Looking for casual gameplay Fri-Sun at 10PM EST.'),
+(7, 504, 5, 'Farming Adventure', 'Looking for a relaxing weekday game, casual play times. I want to cause earthquakes to till my fields, summon the rain to water my fields, and murder my enemies with lightning bolts.');
 
 -- --------------------------------------------------------
 
@@ -219,11 +215,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `username`, `email`, `password`, `name`, `description`, `timeZone`, `playTime`, `siteAdmin`, `openToInvite`, `messagesOpen`, `profilePicture`) VALUES
-(501, 'john_doe', 'john.doe@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'John Doe', '', 'EST', 'Evenings', 0, 1, 1, NULL),
+(501, 'john_doe', 'john.doe@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'John Doe', 'I prefer relaxed games where I can express my creativity!', 'EST', 'Evenings', 0, 1, 1, NULL),
 (502, 'jane_smith', 'jane.smith@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Jane Smith', '', 'PST', 'Weekends', 0, 0, 1, NULL),
 (503, 'alex_brown', 'alex.brown@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Alex Brown', '', 'CST', 'Afternoons', 1, 1, 0, NULL),
-(504, 'admintest', 'test@hotmail.com', 'AT3st@ccount', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL),
-(505, 'tester3', 'no1@1.one', '$2y$10$pVh9B3qKg8zSKeiD10s/uuzfkTBQY3XiC1A4WbOe7MK7dMCLU/V72', '', '', '', '', 1, 0, 0, '');
+(504, 'admintest', 'test@hotmail.com', 'AT3st@ccount', NULL, 'I enjoy playing games in the evenings and on weekends with a few drinks.', NULL, NULL, NULL, NULL, NULL, NULL),
+(505, 'tester3', 'no1@1.one', '$2y$10$pVh9B3qKg8zSKeiD10s/uuzfkTBQY3XiC1A4WbOe7MK7dMCLU/V72', 'Dale', 'I like zoomy games that move fast.', 'Central', '6pm - 10pm', 1, 0, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -261,7 +257,6 @@ ALTER TABLE `groupgames`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`groupID`),
-  ADD KEY `creatorID` (`creatorID`),
   ADD KEY `ownerID` (`ownerID`);
 
 --
