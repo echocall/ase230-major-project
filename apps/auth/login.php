@@ -3,18 +3,45 @@ session_start();
 
 require_once '../../settings.php';
 require_once '../navbar.php';
-// require_once APP_PATH.'../libraries/pdo.php';
+// require_once APP_PATH.'/libraries/pdo.php';
+
+//Configure credentials
+$host='localhost';
+$db='squadup';
+$user='root';
+$pass='';
+$charset='utf8';
+
+$dsn="mysql:host=$host;dbname=$db;charset=$charset";
+
+//Specify options
+$opt = [
+	PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+	PDO::ATTR_EMULATE_PREPARES => false
+];
+
+$pdo=new PDO($dsn,$user,$pass,$opt);
+
+function select($pdo,$query){
+    global $pdo;
+	$result=$pdo->query($query);
+	$row=$result->fetchAll();
+	// returns as array
+	return $row;
+}
 
 $username_error = $password_error = "";
 $username = $password = "";
 
 function database_PULL(){
-    require_once APP_PATH.'/libraries/pdo.php';
+    global $pdo;
     $result = select($pdo,'SELECT * FROM users');
     return $result;
 }
 
 function verify_user($username){
+    global $pdo;
     // getting the data from database
     $usernameResult = database_PULL();
     // checking that the username exists
@@ -42,6 +69,7 @@ function verify_user($username){
 */
 
 function verify_password($username, $password){
+    global $pdo;
     // get username & password  
     $passwordResult = database_PULL();
     // check if username match $username, && password verifies.
