@@ -24,7 +24,6 @@ $int = 0;
 
 // seperate members into their own a
 if(count($_POST)>0){
-    print_r($_POST);
     echo '<br><br>';
     // delete the file.
     $result=deleteFromJSON(APP_PATH.'/data/users/users.JSON',$index);
