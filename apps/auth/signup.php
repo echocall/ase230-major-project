@@ -80,9 +80,13 @@ if(count($_POST)>0){
     <link href="../../themes/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container"><h1>Create your account</h1></div>
-    <div class="container">
-        <form method="POST" action="pdo.php" enctype="multipart/form-data">
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Create your account</h1>
+        </div>
+    </header>
+    <div class="container px-4 text-center">
+        <form method="POST" action="../../libraries/pdo.php" enctype="multipart/form-data">
             <div class="form">
                 Username<br />
                 <div>

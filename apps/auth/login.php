@@ -2,6 +2,7 @@
 session_start();
 
 require_once '../../settings.php';
+require_once '../navbar.php';
 require_once '../../libraries/pdo.php';
 
 $username_error = $password_error = "";
