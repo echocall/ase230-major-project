@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "username", "password", "groupfinder");
+$conn = new mysqli("localhost", "username", "password", "squadup");
 require_once '../../../settings.php';
 require_once APP_PATH.'/libraries/functions.php';
 if ($conn->connect_error) {
