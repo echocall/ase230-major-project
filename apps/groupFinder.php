@@ -38,6 +38,9 @@
     <div class="text-center mt-5">
         <h1>Group Finder</h1>
     </div>
+    <div class="text-center mt-5">
+        <a class="btn btn-lg btn-dark" href="<?PHP echo BASE_URL ?>groups/manage/index.php?">View all</a>
+    </div>
     <div class="wrapper">
         <div id="search-container">
             <input

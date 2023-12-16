@@ -106,8 +106,8 @@ if(count($_POST)>0){
         $password_error = "Password is invalid";
     }else{  # All fields are valid
         $_SESSION['username']=$_POST['username'];
-        header('Location: ../index.php');
-        die();
+        //header('Location: ../index.php');
+        //die();
     }
 }
 ?>
