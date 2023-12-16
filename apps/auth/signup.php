@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once('../../settings.php');
 require_once('../navbar.php');
+require_once('../../settings.php');
+
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
 
@@ -12,7 +13,12 @@ function save_user(){
 
         // write user's information to database.
 		query($pdo,'INSERT INTO users (username,email,password,name,description,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$_POST['password'],$_POST['name'],$_POST['timeZone'],$_POST['playTime'],$_POST['siteAdmin'],$_POST['opentToInvite'],$_POST['messagesOpen'],$_POST['profilePicture']]);
-	}
+        header("Location: ../profile.php");
+    }
+    else{
+        $message = "Sign up failed";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    }
 }
 
 function check_confirm_password($password, $password_conf){
