@@ -6,7 +6,6 @@ require_once APP_PATH.'/libraries/functions.php';
 
 $result=$pdo->query('SELECT * FROM users');
 
-
 echo '<!-- About section-->
 <section id="about">
     <div class="container px-4">
