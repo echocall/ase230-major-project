@@ -5,14 +5,18 @@ require_once('../navbar.php');
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
 
-function save_user(){
+function save_user($newuser){
 	if(count($_POST)>0){
         // if a new user isn't created we don't need this file.
-        require_once APP_PATH.'/libraries/pdo.php';
+        require_once APP_PATH.'../libraries/pdo.php';
 
         // write user's information to database.
-		query($pdo,'INSERT INTO users (username,email,password,name,description,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$_POST['password'],$_POST['name'],$_POST['timeZone'],$_POST['playTime'],$_POST['siteAdmin'],$_POST['opentToInvite'],$_POST['messagesOpen'],$_POST['profilePicture']]);
-	}
+		query($pdo,'INSERT INTO users (username,email,password,name,description,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$newuser['password'],$newuser['name'],$newuser['description'],$newuser['timeZone'],$newuser['playTime'],$newuser['siteAdmin'],$newuser['openToInvite'],$newuser['messagesOpen'],$newuser['profilePicture']]);
+        header("Location: ../profile.php");
+    }
+    else{
+        header("Location: #");
+    }
 }
 
 function check_confirm_password($password, $password_conf){
@@ -53,13 +57,11 @@ if(count($_POST)>0){
             "profilePicture"=>"",
             "timeZone" => "",
             "playTime" => "",
-            "games" => array(),
-            "otherAccounts" => array(),
             "openToInvite" => false,
             "messagesOpen" => false,
-            "admin" => true
+            "siteAdmin" => true
         );
-        save_user();
+        save_user($user);
         $_SESSION['username']=$_POST['username'];
         header('Location: ../index.php');
         die();
@@ -86,7 +88,7 @@ if(count($_POST)>0){
         </div>
     </header>
     <div class="container px-4 text-center">
-        <form method="POST" action="../../libraries/pdo.php" enctype="multipart/form-data">
+        <form method="POST" action="#" enctype="multipart/form-data">
             <div class="form">
                 Username<br />
                 <div>
