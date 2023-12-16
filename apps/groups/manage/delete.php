@@ -1,10 +1,16 @@
 <?php
 // DELETE.php: remove an already existing group.
 require_once '../../../settings.php';
+require_once '../../navbar.php';
 require_once APP_PATH.'/libraries/functions.php';
 
+
+//if ($_SESSION['role'] != 2) {
+//    header('Location: index.php'); // Redirect to index page if not logged in as admin
+//}
+
 // Database connection
-$conn = new mysqli("localhost", "username", "password", "squadup");
+$conn = new mysqli("localhost", "root", "", "squadup");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -22,7 +28,7 @@ if (count($_POST) > 0) {
 
     if ($result && $result->num_rows > 0) {
         $guild = $result->fetch_assoc();
-        // Display delete confirmation with group details
+        echo "Group successfully deleted.";
     } else {
         echo "Group not found.";
     }

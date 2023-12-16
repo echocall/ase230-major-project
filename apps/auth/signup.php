@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once('../navbar.php');
 require_once('../../settings.php');
+require_once('../navbar.php');
 
 $username_error = $password_error = $password_conf_error = $email_error = "";
 $username = $email = $password = $password_conf = "";
@@ -9,7 +9,7 @@ $username = $email = $password = $password_conf = "";
 function save_user($newuser){
 	if(count($_POST)>0){
         // if a new user isn't created we don't need this file.
-        require_once APP_PATH.'../libraries/pdo.php';
+        require_once APP_PATH.'/libraries/pdo.php';
 
         // write user's information to database.
 		query($pdo,'INSERT INTO users (username,email,password,name,description,timeZone,playTime,siteAdmin,openToInvite,messagesOpen,profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)',[$_POST['username'],$_POST['email'],$newuser['password'],$newuser['name'],$newuser['description'],$newuser['timeZone'],$newuser['playTime'],$newuser['siteAdmin'],$newuser['openToInvite'],$newuser['messagesOpen'],$newuser['profilePicture']]);

@@ -11,9 +11,10 @@ $username = $password = "";
 function verify_user($username){
     // getting the data from database
     $result=$pdo->query('SELECT * FROM users');
+    echo '<h1>'.$result.'</h1>';
     // checking that the username/email exists
     while($row=$result->fetch()){
-        if($row['username'] == $username || $row['email'] == $username){
+        if($row['username'] == $username){
             return true;
         }
     }
@@ -38,7 +39,7 @@ function verify_password($username, $password){
     $result=$pdo->query('SELECT * FROM users');
     // check if username || email match $username, && password verifies.
     while($row=$result->fetch()){
-        if(($row['username'] == $username || $row['email'] == $username) && password_verify($password, $row['password'])){
+        if(($row['username'] == $username) && password_verify($password, $row['password'])){
             return true;
         }
     }
@@ -69,8 +70,8 @@ if(count($_POST)>0){
         $password_error = "Password is invalid";
     }else{  # All fields are valid
         $_SESSION['username']=$_POST['username'];
-        header('Location: ../index.php');
-        die();
+        //header('Location: ../index.php');
+        //die();
     }
 }
 ?>
